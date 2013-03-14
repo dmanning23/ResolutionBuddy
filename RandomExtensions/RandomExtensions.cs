@@ -94,7 +94,7 @@ namespace RandomExtensions
 			return new string(name);
 		}
 
-			/// <summary>
+		/// <summary>
 		/// Get a random english-ish sounding name... same as a word, but the first letter is uppercase
 		/// </summary>
 		/// <param name="rand">teh random object we are extending</param>
@@ -110,6 +110,16 @@ namespace RandomExtensions
 			name[0] = (Char.ToUpper(name[0]));
 
 			return name.ToString();
+		}
+
+		/// <summary>
+		/// Get a random swear word
+		/// </summary>
+		/// <param name="rand">teh random object we are extending</param>
+		/// <returns>a four letter swear word</returns>
+		public static string NextSwearWord(this Random rand)
+		{
+			return rand.NextWord(4, 4);
 		}
 	}
 }
