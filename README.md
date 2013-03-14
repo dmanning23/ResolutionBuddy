@@ -23,3 +23,29 @@ curse.Append("!!!");
 
 //whatever
 ```
+
+Here's a couple random names, just so you can see what they will look like:
+Dadera
+Gopakog
+Patougo
+Po
+Ud
+Anniwab
+Xalloog
+Ckijo
+Neas
+Atourit
+Fouw
+Nes
+Sha
+Ene
+Tech
+Zespeke
+Ropid
+Ja
+Nnynnu
+Sesp
+
+So yeah, there are a few duds in there, but not too bad overall, right?
+
+Cheers!
