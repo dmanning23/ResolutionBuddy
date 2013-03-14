@@ -69,29 +69,40 @@ namespace RandomExtensions
 			//Get the length of the name we are gonna generate
 			int nameLength = rand.Next(minLength, maxLength);
 
-			//create an empty name
-			char[] name = new char[nameLength];
+			//create an empty word
+			StringBuilder name = new StringBuilder();
 
 			// The letters to choose from.  we add more of some so that we are more likely to get those letters
-			const string consonants = "bbcddfgghhjklmmnnppqrrssssttttvwxz";
-			const string vowels = "aaaeeeiioouy";
+			string[] consonants = new string[] 
+			{
+				"b", "b", "c", "d", "d", "f","g","g","h","h","j","k","l","m","m","n","n","p","p","qu","r","r","s","s","s","t","t","t","v","w","x","z",
+				"ck", "ck", "sh", "ch", "nn", "gh", "ll", "st", "st", "mn", "sp", "sp","ss", "tt"
+			};
+			string[] vowels = new string[] 
+			{
+				"a","a","a","e","e","e","i","i","o","o","u","y", 
+				"ou", "ea", "oo"
+			};
 
 			//Should this name start with a consonant?
-			int startConsonant = rand.Next(0, 2);
+			bool startConsonant = 0 == rand.Next(0, 2);
 
 			//first fill the name with random consonants
-			for (int i = startConsonant; i < nameLength; i += 2)
+			while (name.Length < nameLength)
 			{
-				name[i] = consonants[rand.Next(0, consonants.Count())];
+				//do we want a consonant or a vowel?
+				if (startConsonant)
+				{
+					name.Append(consonants[rand.Next(0, consonants.Count())]);
+				}
+				else
+				{
+					name.Append(vowels[rand.Next(0, vowels.Count())]);
+				}
+				startConsonant = !startConsonant;
 			}
 
-			//Every other letter is a vowel
-			for (int i = 1 - startConsonant; i < nameLength; i += 2)
-			{
-				name[i] = vowels[rand.Next(0, vowels.Count())];
-			}
-
-			return new string(name);
+			return name.ToString();
 		}
 
 		/// <summary>
