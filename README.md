@@ -1,7 +1,9 @@
 RandomExtensions
 ================
 
-c# random extensions for range of doubles... also random name generator, just for fun :)
+c# random extensions for range of doubles... omg I use this EVERYWHERE it's so useful
+
+Also random name generator, just for fun :)
 
 Just add reference to your project, add the "using RandomExtensions;" at the top of your file, and start using the just like the rest of the functions that are built into the Random class:
 
@@ -17,7 +19,7 @@ curse.Append(" can go ");
 curse.Append(rnd.NextWord(4, 4).ToUpper());
 curse.Append(" his own ");
 curse.Append(rnd.NextWord(4, 4).ToUpper());
-curse.Append("!");
+curse.Append("!!!");
 
 //whatever
 ```
