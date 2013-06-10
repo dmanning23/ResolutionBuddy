@@ -48,7 +48,12 @@ namespace ResolutionBuddy
 			Device = device;
 		}
 
-		static public Matrix getTransformationMatrix()
+		/// <summary>
+		/// Get the transformation matrix for when you call SpriteBatch.Begin
+		/// To add this to a camera matrix, do CameraMatrix * TransformationMatrix
+		/// </summary>
+		/// <returns>The matrix.</returns>
+		static public Matrix TransformationMatrix()
 		{
 			if (_dirtyMatrix)
 			{
@@ -161,7 +166,7 @@ namespace ResolutionBuddy
 			return (float)_VWidth / (float)_VHeight;
 		}
 
-		static private void ResetViewport()
+		static public void ResetViewport()
 		{
 			float targetAspectRatio = getVirtualAspectRatio();
 
