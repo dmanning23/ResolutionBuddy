@@ -1,15 +1,4 @@
-﻿//////////////////////////////////////////////////////////////////////////
-////License:  The MIT License (MIT)
-////Copyright (c) 2010 David Amador (http://www.david-amador.com)
-////
-////Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files (the "Software"), to deal in the Software without restriction, including without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software, and to permit persons to whom the Software is furnished to do so, subject to the following conditions:
-////
-////The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.
-////
-////THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
-//////////////////////////////////////////////////////////////////////////
-
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -18,7 +7,7 @@ using Microsoft.Xna.Framework.Graphics;
 
 namespace ResolutionBuddy
 {
-	static class Resolution
+	public static class Resolution
 	{
 		#region Members
 
@@ -27,6 +16,20 @@ namespace ResolutionBuddy
 		/// </summary>
 		/// <value>The device.</value>
 		static public GraphicsDeviceManager Device { get; private set; }
+
+		/// <summary>
+		/// The title safe area for our virtual resolution
+		/// </summary>
+		/// <value>The title safe area.</value>
+		static public Rectangle _titleSafeArea = new Rectangle();
+
+		static public Rectangle TitleSafeArea
+		{
+			get
+			{
+				return _titleSafeArea;
+			}
+		}
 
 		static private int _Width = 800;
 		static private int _Height = 600;
@@ -42,11 +45,7 @@ namespace ResolutionBuddy
 
 		static public void Init(ref GraphicsDeviceManager device)
 		{
-			_Width = device.PreferredBackBufferWidth;
-			_Height = device.PreferredBackBufferHeight;
 			Device = device;
-			_dirtyMatrix = true;
-			ApplyResolutionSettings();
 		}
 
 		static public Matrix getTransformationMatrix()
@@ -74,6 +73,12 @@ namespace ResolutionBuddy
 			_VWidth = Width;
 			_VHeight = Height;
 
+			//set up the title safe area
+			_titleSafeArea.X = _VWidth / 20;
+			_titleSafeArea.Y = _VHeight / 20;
+			_titleSafeArea.Width = _VWidth - (2 * TitleSafeArea.X);
+			_titleSafeArea.Height = _VHeight - (2 * TitleSafeArea.Y);
+
 			_dirtyMatrix = true;
 		}
 
@@ -83,13 +88,14 @@ namespace ResolutionBuddy
 			// be set to anything equal to or smaller than the actual screen size.
 			if (_FullScreen == false)
 			{
-				if ((_Width <= GraphicsAdapter.DefaultAdapter.CurrentDisplayMode.Width)
-					&& (_Height <= GraphicsAdapter.DefaultAdapter.CurrentDisplayMode.Height))
+				if (_Width > GraphicsAdapter.DefaultAdapter.CurrentDisplayMode.Width)
 				{
-					Device.PreferredBackBufferWidth = _Width;
-					Device.PreferredBackBufferHeight = _Height;
-					Device.IsFullScreen = _FullScreen;
-					Device.ApplyChanges();
+					_Width = GraphicsAdapter.DefaultAdapter.CurrentDisplayMode.Width;
+				}
+
+				if (_Height > GraphicsAdapter.DefaultAdapter.CurrentDisplayMode.Height)
+				{
+					_Height = GraphicsAdapter.DefaultAdapter.CurrentDisplayMode.Height;
 				}
 			}
 			else
@@ -98,24 +104,30 @@ namespace ResolutionBuddy
 				// adapter can handle the video mode we are trying to set.  To do this, we will
 				// iterate through the display modes supported by the adapter and check them against
 				// the mode we want to set.
+				bool bFound = false;
 				foreach (DisplayMode dm in GraphicsAdapter.DefaultAdapter.SupportedDisplayModes)
 				{
 					// Check the width and height of each mode against the passed values
 					if ((dm.Width == _Width) && (dm.Height == _Height))
 					{
 						// The mode is supported, so set the buffer formats, apply changes and return
-						Device.PreferredBackBufferWidth = _Width;
-						Device.PreferredBackBufferHeight = _Height;
-						Device.IsFullScreen = _FullScreen;
-						Device.ApplyChanges();
+						bFound = true;
 					}
+				}
+
+				if (!bFound)
+				{
+					_Width = GraphicsAdapter.DefaultAdapter.CurrentDisplayMode.Width;
+					_Height = GraphicsAdapter.DefaultAdapter.CurrentDisplayMode.Height;
 				}
 			}
 
-			_dirtyMatrix = true;
+			Device.PreferredBackBufferWidth = _Width;
+			Device.PreferredBackBufferHeight = _Height;
+			Device.IsFullScreen = _FullScreen;
+			Device.ApplyChanges();
 
-			_Width = Device.PreferredBackBufferWidth;
-			_Height = Device.PreferredBackBufferHeight;
+			_dirtyMatrix = true;
 		}
 
 		/// <summary>
@@ -124,19 +136,11 @@ namespace ResolutionBuddy
 		/// </summary>
 		static public void BeginDraw()
 		{
-			// Start by reseting viewport to (0,0,1,1)
-			FullViewport();
-
 			// Clear to Black
 			Device.GraphicsDevice.Clear(Color.Black);
 
 			// Calculate Proper Viewport according to Aspect Ratio
 			ResetViewport();
-
-			// and clear that
-			// This way we are gonna have black bars if aspect ratio requires it and
-			// the clear color on the rest
-			Device.GraphicsDevice.Clear(Color.CornflowerBlue);
 		}
 
 		static private void RecreateScaleMatrix()
@@ -148,27 +152,19 @@ namespace ResolutionBuddy
 				1f);
 		}
 
-		static public void FullViewport()
-		{
-			Viewport vp = new Viewport();
-			vp.X = vp.Y = 0;
-			vp.Width = _Width;
-			vp.Height = _Height;
-			Device.GraphicsDevice.Viewport = vp;
-		}
-
 		/// <summary>
 		/// Get virtual Mode Aspect Ratio
 		/// </summary>
 		/// <returns>aspect ratio</returns>
-		static public float getVirtualAspectRatio()
+		static private float getVirtualAspectRatio()
 		{
 			return (float)_VWidth / (float)_VHeight;
 		}
 
-		static public void ResetViewport()
+		static private void ResetViewport()
 		{
 			float targetAspectRatio = getVirtualAspectRatio();
+
 			// figure out the largest area that fits in this resolution at the desired aspect ratio
 			int width = Device.PreferredBackBufferWidth;
 			int height = (int)(width / targetAspectRatio + .5f);
