@@ -1,5 +1,4 @@
 ﻿using System;
-using System.Linq;
 using System.Text;
 
 namespace RandomExtensions
@@ -93,11 +92,11 @@ namespace RandomExtensions
 				//do we want a consonant or a vowel?
 				if (startConsonant)
 				{
-					name.Append(consonants[rand.Next(0, consonants.Count())]);
+					name.Append(consonants[rand.Next(0, consonants.Length)]);
 				}
 				else
 				{
-					name.Append(vowels[rand.Next(0, vowels.Count())]);
+					name.Append(vowels[rand.Next(0, vowels.Length)]);
 				}
 				startConsonant = !startConsonant;
 			}
