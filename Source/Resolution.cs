@@ -31,12 +31,29 @@ namespace ResolutionBuddy
 			}
 		}
 
-		static private int _Width = 800;
-		static private int _Height = 600;
-		static private int _VWidth = 1280;
-		static private int _VHeight = 720;
+		/// <summary>
+		/// The actual screen rectangle
+		/// </summary>
+		static private Rectangle _ScreenRect = new Rectangle(0, 0, 800, 600);
+
+		/// <summary>
+		/// The screen rect we want for our game, and are going to fake
+		/// </summary>
+		static private Rectangle _VirtualRect = new Rectangle(0, 0, 1280, 720);
+
+		/// <summary>
+		/// The scale matrix from the desired rect to the screen rect
+		/// </summary>
 		static private Matrix _ScaleMatrix;
+
+		/// <summary>
+		/// whether or not we want full screen 
+		/// </summary>
 		static private bool _FullScreen = false;
+
+		/// <summary>
+		/// whether or not the matrix needs to be recreated
+		/// </summary>
 		static private bool _dirtyMatrix = true;
 
 		#endregion //Members
@@ -63,26 +80,26 @@ namespace ResolutionBuddy
 			return _ScaleMatrix;
 		}
 
-		static public void SetResolution(int Width, int Height, bool FullScreen)
+		static public void SetScreenResolution(int Width, int Height, bool FullScreen)
 		{
-			_Width = Width;
-			_Height = Height;
+			_ScreenRect.Width = Width;
+			_ScreenRect.Height = Height;
 
 			_FullScreen = FullScreen;
 
 			ApplyResolutionSettings();
 		}
 
-		static public void SetVirtualResolution(int Width, int Height)
+		static public void SetDesiredResolution(int Width, int Height)
 		{
-			_VWidth = Width;
-			_VHeight = Height;
+			_VirtualRect.Width = Width;
+			_VirtualRect.Height = Height;
 
 			//set up the title safe area
-			_titleSafeArea.X = _VWidth / 20;
-			_titleSafeArea.Y = _VHeight / 20;
-			_titleSafeArea.Width = _VWidth - (2 * TitleSafeArea.X);
-			_titleSafeArea.Height = _VHeight - (2 * TitleSafeArea.Y);
+			_titleSafeArea.X = _VirtualRect.Width / 20;
+			_titleSafeArea.Y = _VirtualRect.Height / 20;
+			_titleSafeArea.Width = _VirtualRect.Width - (2 * TitleSafeArea.X);
+			_titleSafeArea.Height = _VirtualRect.Height - (2 * TitleSafeArea.Y);
 
 			_dirtyMatrix = true;
 		}
@@ -93,14 +110,16 @@ namespace ResolutionBuddy
 			// be set to anything equal to or smaller than the actual screen size.
 			if (_FullScreen == false)
 			{
-				if (_Width > GraphicsAdapter.DefaultAdapter.CurrentDisplayMode.Width)
+				//Make sure the width isn't bigger than the screen
+				if (_ScreenRect.Width > GraphicsAdapter.DefaultAdapter.CurrentDisplayMode.Width)
 				{
-					_Width = GraphicsAdapter.DefaultAdapter.CurrentDisplayMode.Width;
+					_ScreenRect.Width = GraphicsAdapter.DefaultAdapter.CurrentDisplayMode.Width;
 				}
 
-				if (_Height > GraphicsAdapter.DefaultAdapter.CurrentDisplayMode.Height)
+				//Make sure the height isn't bigger than the screen
+				if (_ScreenRect.Height > GraphicsAdapter.DefaultAdapter.CurrentDisplayMode.Height)
 				{
-					_Height = GraphicsAdapter.DefaultAdapter.CurrentDisplayMode.Height;
+					_ScreenRect.Height = GraphicsAdapter.DefaultAdapter.CurrentDisplayMode.Height;
 				}
 			}
 			else
@@ -113,7 +132,7 @@ namespace ResolutionBuddy
 				foreach (DisplayMode dm in GraphicsAdapter.DefaultAdapter.SupportedDisplayModes)
 				{
 					// Check the width and height of each mode against the passed values
-					if ((dm.Width == _Width) && (dm.Height == _Height))
+					if ((dm.Width == _ScreenRect.Width) && (dm.Height == _ScreenRect.Height))
 					{
 						// The mode is supported, so set the buffer formats, apply changes and return
 						bFound = true;
@@ -122,13 +141,13 @@ namespace ResolutionBuddy
 
 				if (!bFound)
 				{
-					_Width = GraphicsAdapter.DefaultAdapter.CurrentDisplayMode.Width;
-					_Height = GraphicsAdapter.DefaultAdapter.CurrentDisplayMode.Height;
+					_ScreenRect.Width = GraphicsAdapter.DefaultAdapter.CurrentDisplayMode.Width;
+					_ScreenRect.Height = GraphicsAdapter.DefaultAdapter.CurrentDisplayMode.Height;
 				}
 			}
 
-			Device.PreferredBackBufferWidth = _Width;
-			Device.PreferredBackBufferHeight = _Height;
+			Device.PreferredBackBufferWidth = _ScreenRect.Width;
+			Device.PreferredBackBufferHeight = _ScreenRect.Height;
 			Device.IsFullScreen = _FullScreen;
 			Device.ApplyChanges();
 
@@ -152,8 +171,10 @@ namespace ResolutionBuddy
 		{
 			_dirtyMatrix = false;
 			_ScaleMatrix = Matrix.CreateScale(
-				(float)Device.GraphicsDevice.Viewport.Width / _VWidth,
-				(float)Device.GraphicsDevice.Viewport.Width / _VWidth,
+				(float)_ScreenRect.Width / (float)_VirtualRect.Width,
+				(float)_ScreenRect.Height / (float)_VirtualRect.Height,
+				//(float)Device.GraphicsDevice.Viewport.Width / _VWidth,
+				//(float)Device.GraphicsDevice.Viewport.Height / _VHeight,
 				1f);
 		}
 
@@ -163,7 +184,7 @@ namespace ResolutionBuddy
 		/// <returns>aspect ratio</returns>
 		static private float getVirtualAspectRatio()
 		{
-			return (float)_VWidth / (float)_VHeight;
+			return (float)_VirtualRect.Width / (float)_VirtualRect.Height;
 		}
 
 		static public void ResetViewport()
@@ -171,14 +192,14 @@ namespace ResolutionBuddy
 			float targetAspectRatio = getVirtualAspectRatio();
 
 			// figure out the largest area that fits in this resolution at the desired aspect ratio
-			int width = Device.PreferredBackBufferWidth;
+			int width = _ScreenRect.Width;
 			int height = (int)(width / targetAspectRatio + .5f);
 			bool changed = false;
 
-			if (height > Device.PreferredBackBufferHeight)
+			if (height > _ScreenRect.Height)
 			{
-				height = Device.PreferredBackBufferHeight;
 				// PillarBox
+				height = _ScreenRect.Height;
 				width = (int)(height * targetAspectRatio + .5f);
 				changed = true;
 			}
@@ -186,8 +207,8 @@ namespace ResolutionBuddy
 			// set up the new viewport centered in the backbuffer
 			Viewport viewport = new Viewport();
 
-			viewport.X = (Device.PreferredBackBufferWidth / 2) - (width / 2);
-			viewport.Y = (Device.PreferredBackBufferHeight / 2) - (height / 2);
+			viewport.X = (_ScreenRect.Width / 2) - (width / 2);
+			viewport.Y = (_ScreenRect.Height / 2) - (height / 2);
 			viewport.Width = width;
 			viewport.Height = height;
 			viewport.MinDepth = 0;
