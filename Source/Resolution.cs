@@ -98,8 +98,8 @@ namespace ResolutionBuddy
 			_ScreenRect.Y = Height;
 
 #if ANDROID || OUYA
-			//Android is always fullscreen, but this has to be false
-			_FullScreen = false;
+			//Android is always fullscreen
+			_FullScreen = true;
 #else
 			_FullScreen = FullScreen;
 #endif
