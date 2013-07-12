@@ -182,15 +182,6 @@ namespace ResolutionBuddy
 			_dirtyMatrix = true;
 		}
 
-		/// <summary>
-		/// Sets the device to use the draw pump
-		/// Sets correct aspect ratio
-		/// </summary>
-		static public void BeginDraw()
-		{
-
-		}
-
 		static private void RecreateScaleMatrix()
 		{
 			_dirtyMatrix = false;
