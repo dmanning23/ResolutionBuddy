@@ -34,12 +34,12 @@ namespace ResolutionBuddy
 		/// <summary>
 		/// The actual screen rectangle
 		/// </summary>
-		static private Rectangle _ScreenRect = new Rectangle(0, 0, 800, 600);
+		static private Vector2 _ScreenRect = new Vector2(800, 600);
 
 		/// <summary>
 		/// The screen rect we want for our game, and are going to fake
 		/// </summary>
-		static private Rectangle _VirtualRect = new Rectangle(0, 0, 1280, 720);
+		static private Vector2 _VirtualRect = new Vector2(1280, 720);
 
 		/// <summary>
 		/// The scale matrix from the desired rect to the screen rect
@@ -82,8 +82,8 @@ namespace ResolutionBuddy
 
 		static public void SetScreenResolution(int Width, int Height, bool FullScreen)
 		{
-			_ScreenRect.Width = Width;
-			_ScreenRect.Height = Height;
+			_ScreenRect.X = Width;
+			_ScreenRect.Y = Height;
 
 			_FullScreen = FullScreen;
 
@@ -92,14 +92,14 @@ namespace ResolutionBuddy
 
 		static public void SetDesiredResolution(int Width, int Height)
 		{
-			_VirtualRect.Width = Width;
-			_VirtualRect.Height = Height;
+			_VirtualRect.X = Width;
+			_VirtualRect.Y = Height;
 
 			//set up the title safe area
-			_titleSafeArea.X = _VirtualRect.Width / 20;
-			_titleSafeArea.Y = _VirtualRect.Height / 20;
-			_titleSafeArea.Width = _VirtualRect.Width - (2 * TitleSafeArea.X);
-			_titleSafeArea.Height = _VirtualRect.Height - (2 * TitleSafeArea.Y);
+			_titleSafeArea.X = (int)(_VirtualRect.X / 20.0f);
+			_titleSafeArea.Y = (int)(_VirtualRect.Y / 20.0f);
+			_titleSafeArea.Width = (int)(_VirtualRect.X - (2 * TitleSafeArea.X));
+			_titleSafeArea.Height = (int)(_VirtualRect.Y - (2 * TitleSafeArea.Y));
 
 			_dirtyMatrix = true;
 		}
@@ -111,15 +111,15 @@ namespace ResolutionBuddy
 			if (_FullScreen == false)
 			{
 				//Make sure the width isn't bigger than the screen
-				if (_ScreenRect.Width > GraphicsAdapter.DefaultAdapter.CurrentDisplayMode.Width)
+				if (_ScreenRect.X > GraphicsAdapter.DefaultAdapter.CurrentDisplayMode.Width)
 				{
-					_ScreenRect.Width = GraphicsAdapter.DefaultAdapter.CurrentDisplayMode.Width;
+					_ScreenRect.X = GraphicsAdapter.DefaultAdapter.CurrentDisplayMode.Width;
 				}
 
 				//Make sure the height isn't bigger than the screen
-				if (_ScreenRect.Height > GraphicsAdapter.DefaultAdapter.CurrentDisplayMode.Height)
+				if (_ScreenRect.Y > GraphicsAdapter.DefaultAdapter.CurrentDisplayMode.Height)
 				{
-					_ScreenRect.Height = GraphicsAdapter.DefaultAdapter.CurrentDisplayMode.Height;
+					_ScreenRect.Y = GraphicsAdapter.DefaultAdapter.CurrentDisplayMode.Height;
 				}
 			}
 			else
@@ -132,7 +132,7 @@ namespace ResolutionBuddy
 				foreach (DisplayMode dm in GraphicsAdapter.DefaultAdapter.SupportedDisplayModes)
 				{
 					// Check the width and height of each mode against the passed values
-					if ((dm.Width == _ScreenRect.Width) && (dm.Height == _ScreenRect.Height))
+					if ((dm.Width == _ScreenRect.X) && (dm.Height == _ScreenRect.Y))
 					{
 						// The mode is supported, so set the buffer formats, apply changes and return
 						bFound = true;
@@ -141,13 +141,13 @@ namespace ResolutionBuddy
 
 				if (!bFound)
 				{
-					_ScreenRect.Width = GraphicsAdapter.DefaultAdapter.CurrentDisplayMode.Width;
-					_ScreenRect.Height = GraphicsAdapter.DefaultAdapter.CurrentDisplayMode.Height;
+					_ScreenRect.X = GraphicsAdapter.DefaultAdapter.CurrentDisplayMode.Width;
+					_ScreenRect.Y = GraphicsAdapter.DefaultAdapter.CurrentDisplayMode.Height;
 				}
 			}
 
-			Device.PreferredBackBufferWidth = _ScreenRect.Width;
-			Device.PreferredBackBufferHeight = _ScreenRect.Height;
+			Device.PreferredBackBufferWidth = (int)_ScreenRect.X;
+			Device.PreferredBackBufferHeight = (int)_ScreenRect.Y;
 			Device.IsFullScreen = _FullScreen;
 			Device.ApplyChanges();
 
@@ -171,11 +171,11 @@ namespace ResolutionBuddy
 		{
 			_dirtyMatrix = false;
 			_ScaleMatrix = Matrix.CreateScale(
-				(float)_ScreenRect.Width / (float)_VirtualRect.Width,
-				(float)_ScreenRect.Height / (float)_VirtualRect.Height,
+				_ScreenRect.X / _VirtualRect.X,
+				_ScreenRect.X / _VirtualRect.X,
 				//(float)Device.GraphicsDevice.Viewport.Width / _VWidth,
 				//(float)Device.GraphicsDevice.Viewport.Height / _VHeight,
-				1f);
+				1.0f);
 		}
 
 		/// <summary>
@@ -184,7 +184,7 @@ namespace ResolutionBuddy
 		/// <returns>aspect ratio</returns>
 		static private float getVirtualAspectRatio()
 		{
-			return (float)_VirtualRect.Width / (float)_VirtualRect.Height;
+			return _VirtualRect.X / _VirtualRect.Y;
 		}
 
 		static public void ResetViewport()
@@ -192,25 +192,25 @@ namespace ResolutionBuddy
 			float targetAspectRatio = getVirtualAspectRatio();
 
 			// figure out the largest area that fits in this resolution at the desired aspect ratio
-			int width = _ScreenRect.Width;
-			int height = (int)(width / targetAspectRatio + .5f);
+			float width = _ScreenRect.X;
+			float height = (width / targetAspectRatio + .5f);
 			bool changed = false;
 
-			if (height > _ScreenRect.Height)
+			if (height > _ScreenRect.Y)
 			{
 				// PillarBox
-				height = _ScreenRect.Height;
-				width = (int)(height * targetAspectRatio + .5f);
+				height = _ScreenRect.Y;
+				width = (height * targetAspectRatio + .5f);
 				changed = true;
 			}
 
 			// set up the new viewport centered in the backbuffer
 			Viewport viewport = new Viewport();
 
-			viewport.X = (_ScreenRect.Width / 2) - (width / 2);
-			viewport.Y = (_ScreenRect.Height / 2) - (height / 2);
-			viewport.Width = width;
-			viewport.Height = height;
+			viewport.X = (int)((_ScreenRect.X / 2.0f) - (width / 2.0f));
+			viewport.Y = (int)((_ScreenRect.Y / 2.0f) - (height / 2.0f));
+			viewport.Width = (int)width;
+			viewport.Height = (int)height;
 			viewport.MinDepth = 0;
 			viewport.MaxDepth = 1;
 
