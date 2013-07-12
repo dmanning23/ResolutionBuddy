@@ -188,11 +188,7 @@ namespace ResolutionBuddy
 		/// </summary>
 		static public void BeginDraw()
 		{
-			// Clear to Black
-			Device.GraphicsDevice.Clear(Color.Black);
 
-			// Calculate Proper Viewport according to Aspect Ratio
-			ResetViewport();
 		}
 
 		static private void RecreateScaleMatrix()
