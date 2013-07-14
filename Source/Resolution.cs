@@ -7,6 +7,12 @@ using Microsoft.Xna.Framework.Graphics;
 
 namespace ResolutionBuddy
 {
+	/// <summary>
+	/// This is a class for managing the resolution of a game.
+	/// You give it the virtual resolution, which is the target of the game
+	/// Then it tries to set up the screen to match your target, it will letterbox or whatever if it has to
+	/// This way you don't have to change any code or assets to support multiple resolutions.
+	/// </summary>
 	public static class Resolution
 	{
 		#region Members
@@ -21,7 +27,7 @@ namespace ResolutionBuddy
 		/// The title safe area for our virtual resolution
 		/// </summary>
 		/// <value>The title safe area.</value>
-		static public Rectangle _titleSafeArea = new Rectangle();
+		static private Rectangle _titleSafeArea = new Rectangle();
 
 		static public Rectangle TitleSafeArea
 		{
@@ -34,7 +40,7 @@ namespace ResolutionBuddy
 		/// <summary>
 		/// The actual screen rectangle
 		/// </summary>
-		static private Point _ScreenRect = new Point(800, 600);
+		static private Point _ScreenRect = new Point(1280, 720);
 
 		/// <summary>
 		/// The screen rect we want for our game, and are going to fake
@@ -174,10 +180,6 @@ namespace ResolutionBuddy
 			Device.IsFullScreen = _FullScreen;
 			Device.ApplyChanges();
 
-//			//grab those variables just in case it didn't work
-//			_ScreenRect.X = Device.PreferredBackBufferWidth;
-//			_ScreenRect.Y = Device.PreferredBackBufferHeight;
-
 			//we are gonna have to redo that scale matrix
 			_dirtyMatrix = true;
 		}
@@ -186,8 +188,6 @@ namespace ResolutionBuddy
 		{
 			_dirtyMatrix = false;
 			_ScaleMatrix = Matrix.CreateScale(
-//				(float)(_ScreenRect.X / _VirtualRect.X),
-//				(float)(_ScreenRect.X / _VirtualRect.X),
 				(float)Device.GraphicsDevice.Viewport.Width / _VirtualRect.X,
 				(float)Device.GraphicsDevice.Viewport.Height / _VirtualRect.Y,
 				1.0f);
