@@ -29,13 +29,10 @@ namespace ResolutionBuddy
 		/// <value>The title safe area.</value>
 		static private Rectangle _titleSafeArea = new Rectangle();
 
-		static public Rectangle TitleSafeArea
-		{
-			get
-			{
-				return _titleSafeArea;
-			}
-		}
+		/// <summary>
+		/// This will be a rectangle of the whole screen in our "virtual resolution"
+		/// </summary>
+		static private Rectangle _screenArea = new Rectangle();
 
 		/// <summary>
 		/// The actual screen rectangle
@@ -63,6 +60,26 @@ namespace ResolutionBuddy
 		static private bool _dirtyMatrix = true;
 
 		#endregion //Members
+
+		#region Properties
+
+		static public Rectangle TitleSafeArea
+		{
+			get
+			{
+				return _titleSafeArea;
+			}
+		}
+
+		static public Rectangle ScreenArea
+		{
+			get
+			{
+				return _screenArea;
+			}
+		}
+
+		#endregion //Properties
 
 		#region Methods
 
@@ -122,6 +139,8 @@ namespace ResolutionBuddy
 		{
 			_VirtualRect.X = Width;
 			_VirtualRect.Y = Height;
+
+			_screenArea = new Rectangle(0, 0, _VirtualRect.X, _VirtualRect.Y);
 
 			//set up the title safe area
 			_titleSafeArea.X = (int)(_VirtualRect.X / 20.0f);
