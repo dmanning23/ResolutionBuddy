@@ -14,65 +14,59 @@ namespace ResolutionBuddy
 		#region Members
 
 		/// <summary>
-		/// The graphics device
-		/// </summary>
-		/// <value>The device.</value>
-		static public GraphicsDeviceManager Device { get; private set; }
-
-		/// <summary>
 		/// The title safe area for our virtual resolution
 		/// </summary>
 		/// <value>The title safe area.</value>
-		static private Rectangle _titleSafeArea = new Rectangle();
+		private static Rectangle _titleSafeArea;
 
 		/// <summary>
 		/// This will be a rectangle of the whole screen in our "virtual resolution"
 		/// </summary>
-		static private Rectangle _screenArea = new Rectangle();
+		private static Rectangle _screenArea;
 
 		/// <summary>
 		/// The actual screen rectangle
 		/// </summary>
-		static private Point _ScreenRect = new Point(1280, 720);
+		private static Point _ScreenRect = new Point(1280, 720);
 
 		/// <summary>
 		/// The screen rect we want for our game, and are going to fake
 		/// </summary>
-		static private Point _VirtualRect = new Point(1280, 720);
+		private static Point _VirtualRect = new Point(1280, 720);
 
 		/// <summary>
 		/// The scale matrix from the desired rect to the screen rect
 		/// </summary>
-		static private Matrix _ScaleMatrix;
+		private static Matrix _ScaleMatrix;
 
 		/// <summary>
 		/// whether or not we want full screen 
 		/// </summary>
-		static private bool _FullScreen = false;
+		private static bool _FullScreen;
 
 		/// <summary>
 		/// whether or not the matrix needs to be recreated
 		/// </summary>
-		static private bool _dirtyMatrix = true;
+		private static bool _dirtyMatrix = true;
+
+		/// <summary>
+		/// The graphics device
+		/// </summary>
+		/// <value>The device.</value>
+		public static GraphicsDeviceManager Device { get; private set; }
 
 		#endregion //Members
 
 		#region Properties
 
-		static public Rectangle TitleSafeArea
+		public static Rectangle TitleSafeArea
 		{
-			get
-			{
-				return _titleSafeArea;
-			}
+			get { return _titleSafeArea; }
 		}
 
-		static public Rectangle ScreenArea
+		public static Rectangle ScreenArea
 		{
-			get
-			{
-				return _screenArea;
-			}
+			get { return _screenArea; }
 		}
 
 		#endregion //Properties
@@ -83,7 +77,7 @@ namespace ResolutionBuddy
 		/// Init the specified device.
 		/// </summary>
 		/// <param name="device">Device.</param>
-		static public void Init(ref GraphicsDeviceManager deviceMananger)
+		public static void Init(ref GraphicsDeviceManager deviceMananger)
 		{
 			Device = deviceMananger;
 			_ScreenRect.X = Device.PreferredBackBufferWidth;
@@ -95,7 +89,7 @@ namespace ResolutionBuddy
 		/// To add this to a camera matrix, do CameraMatrix * TransformationMatrix
 		/// </summary>
 		/// <returns>The matrix.</returns>
-		static public Matrix TransformationMatrix()
+		public static Matrix TransformationMatrix()
 		{
 			if (_dirtyMatrix)
 			{
@@ -111,13 +105,13 @@ namespace ResolutionBuddy
 		/// <param name="Width">Width.</param>
 		/// <param name="Height">Height.</param>
 		/// <param name="FullScreen">If set to <c>true</c> full screen.</param>
-		static public void SetScreenResolution(int Width, int Height, bool FullScreen)
+		public static void SetScreenResolution(int Width, int Height, bool FullScreen)
 		{
 			_ScreenRect.X = Width;
 			_ScreenRect.Y = Height;
 
 #if ANDROID || OUYA
-			//Android is always fullscreen
+	//Android is always fullscreen
 			_FullScreen = true;
 #else
 			_FullScreen = FullScreen;
@@ -131,7 +125,7 @@ namespace ResolutionBuddy
 		/// </summary>
 		/// <param name="Width">Width.</param>
 		/// <param name="Height">Height.</param>
-		static public void SetDesiredResolution(int Width, int Height)
+		public static void SetDesiredResolution(int Width, int Height)
 		{
 			_VirtualRect.X = Width;
 			_VirtualRect.Y = Height;
@@ -147,7 +141,7 @@ namespace ResolutionBuddy
 			_dirtyMatrix = true;
 		}
 
-		static private void ApplyResolutionSettings()
+		private static void ApplyResolutionSettings()
 		{
 			// If we aren't using a full screen mode, the height and width of the window can
 			// be set to anything equal to or smaller than the actual screen size.
@@ -199,7 +193,7 @@ namespace ResolutionBuddy
 			_dirtyMatrix = true;
 		}
 
-		static private void RecreateScaleMatrix()
+		private static void RecreateScaleMatrix()
 		{
 			_dirtyMatrix = false;
 			_ScaleMatrix = Matrix.CreateScale(
@@ -212,18 +206,18 @@ namespace ResolutionBuddy
 		/// Get virtual Mode Aspect Ratio
 		/// </summary>
 		/// <returns>aspect ratio</returns>
-		static private float getVirtualAspectRatio()
+		private static float getVirtualAspectRatio()
 		{
-			return (float)_VirtualRect.X / (float)_VirtualRect.Y;
+			return _VirtualRect.X / (float)_VirtualRect.Y;
 		}
 
-		static public void ResetViewport()
+		public static void ResetViewport()
 		{
 			float targetAspectRatio = getVirtualAspectRatio();
 
 			// figure out the largest area that fits in this resolution at the desired aspect ratio
 			int width = Device.PreferredBackBufferWidth;
-			int height = (int)(width / targetAspectRatio + .5f);
+			var height = (int)(width / targetAspectRatio + .5f);
 			bool changed = false;
 
 			if (height > Device.PreferredBackBufferHeight)
@@ -235,7 +229,7 @@ namespace ResolutionBuddy
 			}
 
 			// set up the new viewport centered in the backbuffer
-			Viewport viewport = new Viewport();
+			var viewport = new Viewport();
 
 			viewport.X = (Device.PreferredBackBufferWidth / 2) - (width / 2);
 			viewport.Y = (Device.PreferredBackBufferHeight / 2) - (height / 2);
