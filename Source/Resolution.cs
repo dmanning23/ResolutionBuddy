@@ -183,6 +183,14 @@ namespace ResolutionBuddy
 				}
 			}
 
+			//don't screw around with portrait mode
+			if (_screenRect.Y > _screenRect.X)
+			{
+				int height = _screenRect.Y;
+				_screenRect.Y = _screenRect.X;
+				_screenRect.X = height;
+			}
+
 			//ok, found a good set of stuff... set the graphics device
 			Device.PreferredBackBufferWidth = _screenRect.X;
 			Device.PreferredBackBufferHeight = _screenRect.Y;
