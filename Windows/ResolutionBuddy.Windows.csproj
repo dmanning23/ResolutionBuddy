@@ -64,7 +64,12 @@
       <Link>Resolution.cs</Link>
     </Compile>
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <ProjectReference Include="..\..\MatrixExtensions\Windows\MatrixExtensions.Windows.csproj">
+      <Project>{e2c50d0b-a1c1-4f67-92cb-be0e587a3ce6}</Project>
+      <Name>MatrixExtensions.Windows</Name>
+    </ProjectReference>
+  </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
   </ItemGroup>

@@ -1,4 +1,5 @@
-﻿using Microsoft.Xna.Framework;
+﻿using MatrixExtensions;
+using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 
 namespace ResolutionBuddy
@@ -25,19 +26,24 @@ namespace ResolutionBuddy
 		private static Rectangle _screenArea;
 
 		/// <summary>
-		/// The actual screen rectangle
+		/// The actual screen resolution
 		/// </summary>
 		private static Point _screenRect = new Point(1280, 720);
 
 		/// <summary>
 		/// The screen rect we want for our game, and are going to fake
 		/// </summary>
-		private static Point _virtualRect = new Point(1280, 720);
+		public static Point VirtualRect { get; set; }
 
 		/// <summary>
 		/// The scale matrix from the desired rect to the screen rect
 		/// </summary>
 		private static Matrix _scaleMatrix;
+
+		/// <summary>
+		/// Scale matrix used to convert screen coords (mouse click, touch events) to game coords.
+		/// </summary>
+		private static Matrix _screenMatrix;
 
 		/// <summary>
 		/// whether or not we want full screen 
@@ -69,9 +75,22 @@ namespace ResolutionBuddy
 			get { return _screenArea; }
 		}
 
+		public static Matrix ScreenMatrix
+		{
+			get
+			{
+				return _screenMatrix;
+			}
+		}
+
 		#endregion //Properties
 
 		#region Methods
+
+		static Resolution()
+		{
+			VirtualRect = new Point(1280, 720);
+		}
 
 		/// <summary>
 		/// Init the specified device.
@@ -93,10 +112,22 @@ namespace ResolutionBuddy
 		{
 			if (_dirtyMatrix)
 			{
-				RecreateScaleMatrix();
+				RecreateScaleMatrix(new Point(
+					Device.GraphicsDevice.Viewport.Width,
+					Device.GraphicsDevice.Viewport.Height));
 			}
 
 			return _scaleMatrix;
+		}
+
+		/// <summary>
+		/// Given a screen coord, convert to game coordinate system.
+		/// </summary>
+		/// <param name="screenCoord"></param>
+		/// <returns></returns>
+		public static Vector2 ScreenToGameCoord(Vector2 screenCoord)
+		{
+			return MatrixExt.Multiply(_screenMatrix, screenCoord);
 		}
 
 		/// <summary>
@@ -127,16 +158,15 @@ namespace ResolutionBuddy
 		/// <param name="Height">Height.</param>
 		public static void SetDesiredResolution(int Width, int Height)
 		{
-			_virtualRect.X = Width;
-			_virtualRect.Y = Height;
+			VirtualRect = new Point(Width, Height);
 
-			_screenArea = new Rectangle(0, 0, _virtualRect.X, _virtualRect.Y);
+			_screenArea = new Rectangle(0, 0, VirtualRect.X, VirtualRect.Y);
 
 			//set up the title safe area
-			_titleSafeArea.X = (int)(_virtualRect.X / 20.0f);
-			_titleSafeArea.Y = (int)(_virtualRect.Y / 20.0f);
-			_titleSafeArea.Width = (int)(_virtualRect.X - (2.0f * TitleSafeArea.X));
-			_titleSafeArea.Height = (int)(_virtualRect.Y - (2.0f * TitleSafeArea.Y));
+			_titleSafeArea.X = (int)(VirtualRect.X / 20.0f);
+			_titleSafeArea.Y = (int)(VirtualRect.Y / 20.0f);
+			_titleSafeArea.Width = (int)(VirtualRect.X - (2.0f * TitleSafeArea.X));
+			_titleSafeArea.Height = (int)(VirtualRect.Y - (2.0f * TitleSafeArea.Y));
 
 			_dirtyMatrix = true;
 		}
@@ -201,12 +231,17 @@ namespace ResolutionBuddy
 			_dirtyMatrix = true;
 		}
 
-		private static void RecreateScaleMatrix()
+		public static void RecreateScaleMatrix(Point vp)
 		{
 			_dirtyMatrix = false;
 			_scaleMatrix = Matrix.CreateScale(
-				(float)Device.GraphicsDevice.Viewport.Width / _virtualRect.X,
-				(float)Device.GraphicsDevice.Viewport.Height / _virtualRect.Y,
+				((float)vp.X / (float)VirtualRect.X),
+				((float)vp.Y / (float)VirtualRect.Y),
+				1.0f);
+
+			_screenMatrix = Matrix.CreateScale(
+				((float)VirtualRect.X / (float)vp.X),
+				((float)VirtualRect.Y / (float)vp.Y),
 				1.0f);
 		}
 
@@ -216,7 +251,7 @@ namespace ResolutionBuddy
 		/// <returns>aspect ratio</returns>
 		private static float getVirtualAspectRatio()
 		{
-			return _virtualRect.X / (float)_virtualRect.Y;
+			return VirtualRect.X / (float)VirtualRect.Y;
 		}
 
 		public static void ResetViewport()
