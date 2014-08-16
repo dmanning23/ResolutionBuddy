@@ -203,6 +203,7 @@ namespace ResolutionBuddy
 					{
 						// The mode is supported, so set the buffer formats, apply changes and return
 						bFound = true;
+						break;
 					}
 				}
 
