@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?>
+﻿<?xml version="1.0" encoding="utf-8"?>
 <Project DefaultTargets="Build" ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
@@ -15,6 +15,7 @@
     <MonoAndroidAssetsPrefix>Assets</MonoAndroidAssetsPrefix>
     <AssemblyName>ResolutionBuddy.Ouya</AssemblyName>
     <TargetFrameworkVersion>v4.1</TargetFrameworkVersion>
+    <NuGetPackageImportStamp>9b1ac086</NuGetPackageImportStamp>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -38,7 +39,6 @@
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="System" />
-    <Reference Include="System.Xml" />
     <Reference Include="System.Core" />
     <Reference Include="Mono.Android" />
   </ItemGroup>
@@ -56,8 +56,12 @@
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\Novell\Novell.MonoDroid.CSharp.targets" />
   <ItemGroup>
+    <ProjectReference Include="..\..\MatrixExtensions\Ouya\MatrixExtensions.Ouya.csproj">
+      <Project>{2E31A986-E147-4000-A5E3-28309C9DC601}</Project>
+      <Name>MatrixExtensions.Ouya</Name>
+    </ProjectReference>
     <ProjectReference Include="..\..\MonoGame\MonoGame.Framework\MonoGame.Framework.Ouya.csproj">
-      <Project>{8BEA875D-66D2-4A5F-B137-83D262A3851D}</Project>
+      <Project>{8bea875d-66d2-4a5f-b137-83d262a3851d}</Project>
       <Name>MonoGame.Framework.Ouya</Name>
     </ProjectReference>
   </ItemGroup>
