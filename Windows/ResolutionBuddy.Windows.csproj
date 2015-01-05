@@ -3,8 +3,6 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">x86</Platform>
-    <ProductVersion>10.0.0</ProductVersion>
-    <SchemaVersion>2.0</SchemaVersion>
     <ProjectGuid>{28342DF0-0089-4A2A-B3D4-6DCD65D6D8E4}</ProjectGuid>
     <OutputType>Library</OutputType>
     <RootNamespace>ResolutionBuddy.Windows</RootNamespace>
@@ -66,7 +64,7 @@
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\..\MatrixExtensions\Windows\MatrixExtensions.Windows.csproj">
-      <Project>{e2c50d0b-a1c1-4f67-92cb-be0e587a3ce6}</Project>
+      <Project>{E2C50D0B-A1C1-4F67-92CB-BE0E587A3CE6}</Project>
       <Name>MatrixExtensions.Windows</Name>
     </ProjectReference>
   </ItemGroup>
