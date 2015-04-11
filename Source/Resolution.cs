@@ -96,7 +96,7 @@ namespace ResolutionBuddy
 		/// Init the specified device.
 		/// </summary>
 		/// <param name="deviceMananger">Device.</param>
-		public static void Init(ref GraphicsDeviceManager deviceMananger)
+		public static void Init(GraphicsDeviceManager deviceMananger)
 		{
 			Device = deviceMananger;
 			_screenRect.X = Device.PreferredBackBufferWidth;
