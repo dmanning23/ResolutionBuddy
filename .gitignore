@@ -37,6 +37,9 @@ x64/
 *.vssscc
 .builds
 *.userprefs
+*.cachefile
+*.apk
+*.nupkg
 
 # Visual C++ cache files
 ipch/

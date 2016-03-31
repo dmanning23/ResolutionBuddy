@@ -1,0 +1,25 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<package xmlns="http://schemas.microsoft.com/packaging/2011/08/nuspec.xsd">
+    <metadata>
+        <id>ResolutionBuddy.WindowsGL</id>
+        <version>1.0.0</version>
+        <title>ResolutionBuddy.WindowsGL</title>
+        <authors>dmanning23</authors>
+		<owners>dmanning23</owners>
+		<projectUrl>https://github.com/dmanning23/ResolutionBuddy</projectUrl>
+		<licenseUrl>https://github.com/dmanning23/ResolutionBuddy/blob/master/LICENSE.txt</licenseUrl>
+		<requireLicenseAcceptance>false</requireLicenseAcceptance>
+		<description>Easily manage the window resolution of an MonoGame project</description>
+        <releaseNotes />
+        <copyright>Copyright 2016</copyright>
+        <tags>MonoGame WindowsGL</tags>
+        <dependencies>
+            <dependency id="MonoGame.Framework.WindowsGL" version="(3.5,)"/>
+			<dependency id="GameTimer.WindowsGL" version="(1.0,)"/>
+		</dependencies>
+    </metadata>
+    <files>
+        <file src="Y:\Documents\Projects\ResolutionBuddy\ResolutionBuddy\ResolutionBuddy.WindowsGL\bin\Release\ResolutionBuddy.WindowsGL.pdb" target="lib\ResolutionBuddy.WindowsGL.pdb" />
+        <file src="Y:\Documents\Projects\ResolutionBuddy\ResolutionBuddy\ResolutionBuddy.WindowsGL\bin\Release\ResolutionBuddy.WindowsGL.dll" target="lib\ResolutionBuddy.WindowsGL.dll" />
+    </files>
+</package>
