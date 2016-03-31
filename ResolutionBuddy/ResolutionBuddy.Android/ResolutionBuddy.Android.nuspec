@@ -2,7 +2,7 @@
 <package xmlns="http://schemas.microsoft.com/packaging/2011/08/nuspec.xsd">
     <metadata>
         <id>ResolutionBuddy.Android</id>
-        <version>1.0.0</version>
+        <version>1.0.1</version>
         <title>ResolutionBuddy.Android</title>
         <authors>dmanning23</authors>
 		<owners>dmanning23</owners>
@@ -15,7 +15,7 @@
         <tags>MonoGame Android</tags>
         <dependencies>
             <dependency id="MonoGame.Framework.Android" version="(3.5,)"/>
-			<dependency id="GameTimer.Android" version="(1.0,)"/>
+			<dependency id="MatrixExtensions.Android" version="(1.0,)"/>
 		</dependencies>
     </metadata>
     <files>
