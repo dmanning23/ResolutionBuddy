@@ -2,7 +2,7 @@
 <package xmlns="http://schemas.microsoft.com/packaging/2011/08/nuspec.xsd">
     <metadata>
         <id>ResolutionBuddy.WindowsGL</id>
-        <version>1.0.1</version>
+        <version>1.0.3</version>
         <title>ResolutionBuddy.WindowsGL</title>
         <authors>dmanning23</authors>
 		<owners>dmanning23</owners>
@@ -15,7 +15,7 @@
         <tags>MonoGame WindowsGL</tags>
         <dependencies>
             <dependency id="MonoGame.Framework.WindowsGL" version="(3.5,)"/>
-			<dependency id="MatrixExtensions.WindowsGL" version="(1.0,)"/>
+			<dependency id="MatrixExtensions.WindowsGL" version="(1,)"/>
 		</dependencies>
     </metadata>
     <files>
