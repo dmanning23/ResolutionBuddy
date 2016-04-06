@@ -1,9 +1,9 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <package xmlns="http://schemas.microsoft.com/packaging/2011/08/nuspec.xsd">
     <metadata>
-        <id>ResolutionBuddy.Android</id>
+        <id>ResolutionBuddy.iOS</id>
         <version>1.0.4</version>
-        <title>ResolutionBuddy.Android</title>
+        <title>ResolutionBuddy.iOS</title>
         <authors>dmanning23</authors>
 		<owners>dmanning23</owners>
 		<projectUrl>https://github.com/dmanning23/ResolutionBuddy</projectUrl>
@@ -12,14 +12,14 @@
 		<description>Easily manage the window resolution of an MonoGame project</description>
         <releaseNotes />
         <copyright>Copyright 2016</copyright>
-        <tags>MonoGame Android</tags>
+        <tags>MonoGame iOS</tags>
         <dependencies>
-            <dependency id="MonoGame.Framework.Android" version="(3.5,)"/>
-			<dependency id="MatrixExtensions.Android" version="(1,)"/>
+            <dependency id="MonoGame.Framework.iOS" version="(3.5,)"/>
+			<dependency id="MatrixExtensions.iOS" version="(1,)"/>
 		</dependencies>
     </metadata>
     <files>
-        <file src="Y:\Documents\Projects\ResolutionBuddy\ResolutionBuddy\ResolutionBuddy.Android\bin\Release\ResolutionBuddy.Android.pdb" target="lib\ResolutionBuddy.Android.pdb" />
-        <file src="Y:\Documents\Projects\ResolutionBuddy\ResolutionBuddy\ResolutionBuddy.Android\bin\Release\ResolutionBuddy.Android.dll" target="lib\ResolutionBuddy.Android.dll" />
+        <file src="Y:\Documents\Projects\ResolutionBuddy\ResolutionBuddy\ResolutionBuddy.iOS\bin\Release\ResolutionBuddy.iOS.pdb" target="lib\ResolutionBuddy.iOS.pdb" />
+        <file src="Y:\Documents\Projects\ResolutionBuddy\ResolutionBuddy\ResolutionBuddy.iOS\bin\Release\ResolutionBuddy.iOS.dll" target="lib\ResolutionBuddy.iOS.dll" />
     </files>
 </package>

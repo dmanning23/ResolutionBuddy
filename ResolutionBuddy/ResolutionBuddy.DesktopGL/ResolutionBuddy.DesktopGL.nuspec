@@ -1,9 +1,9 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <package xmlns="http://schemas.microsoft.com/packaging/2011/08/nuspec.xsd">
     <metadata>
-        <id>ResolutionBuddy.WindowsGL</id>
-        <version>1.0.3</version>
-        <title>ResolutionBuddy.WindowsGL</title>
+        <id>ResolutionBuddy.DesktopGL</id>
+        <version>1.0.4</version>
+        <title>ResolutionBuddy.DesktopGL</title>
         <authors>dmanning23</authors>
 		<owners>dmanning23</owners>
 		<projectUrl>https://github.com/dmanning23/ResolutionBuddy</projectUrl>
@@ -12,14 +12,14 @@
 		<description>Easily manage the window resolution of an MonoGame project</description>
         <releaseNotes />
         <copyright>Copyright 2016</copyright>
-        <tags>MonoGame WindowsGL</tags>
+        <tags>MonoGame DesktopGL</tags>
         <dependencies>
-            <dependency id="MonoGame.Framework.WindowsGL" version="(3.5,)"/>
-			<dependency id="MatrixExtensions.WindowsGL" version="(1,)"/>
+            <dependency id="MonoGame.Framework.DesktopGL" version="(3.5,)"/>
+			<dependency id="MatrixExtensions.DesktopGL" version="(1,)"/>
 		</dependencies>
     </metadata>
     <files>
-        <file src="Y:\Documents\Projects\ResolutionBuddy\ResolutionBuddy\ResolutionBuddy.WindowsGL\bin\Release\ResolutionBuddy.WindowsGL.pdb" target="lib\ResolutionBuddy.WindowsGL.pdb" />
-        <file src="Y:\Documents\Projects\ResolutionBuddy\ResolutionBuddy\ResolutionBuddy.WindowsGL\bin\Release\ResolutionBuddy.WindowsGL.dll" target="lib\ResolutionBuddy.WindowsGL.dll" />
+        <file src="Y:\Documents\Projects\ResolutionBuddy\ResolutionBuddy\ResolutionBuddy.DesktopGL\bin\Release\ResolutionBuddy.DesktopGL.pdb" target="lib\ResolutionBuddy.DesktopGL.pdb" />
+        <file src="Y:\Documents\Projects\ResolutionBuddy\ResolutionBuddy\ResolutionBuddy.DesktopGL\bin\Release\ResolutionBuddy.DesktopGL.dll" target="lib\ResolutionBuddy.DesktopGL.dll" />
     </files>
 </package>
