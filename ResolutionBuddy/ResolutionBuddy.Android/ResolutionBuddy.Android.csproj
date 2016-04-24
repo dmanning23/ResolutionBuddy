@@ -36,7 +36,7 @@
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="MatrixExtensions.Android, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\MatrixExtensions.Android.1.0.4\lib\MatrixExtensions.Android.dll</HintPath>
+      <HintPath>..\packages\MatrixExtensions.1.0.0\lib\MonoAndroid10\MatrixExtensions.Android.dll</HintPath>
       <Private>True</Private>
     </Reference>
     <Reference Include="Mono.Android" />
@@ -46,7 +46,7 @@
     </Reference>
     <Reference Include="mscorlib" />
     <Reference Include="RandomExtensions.Android, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\RandomExtensions.dmanning23.Android.1.0.1\lib\RandomExtensions.Android.dll</HintPath>
+      <HintPath>..\packages\RandomExtensions.dmanning23.1.0.0\lib\MonoAndroid10\RandomExtensions.Android.dll</HintPath>
       <Private>True</Private>
     </Reference>
     <Reference Include="System" />
@@ -54,7 +54,7 @@
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Xml" />
     <Reference Include="Vector2Extensions.Android, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\Vector2Extensions.Android.1.0.4\lib\Vector2Extensions.Android.dll</HintPath>
+      <HintPath>..\packages\Vector2Extensions.1.0.1\lib\MonoAndroid10\Vector2Extensions.Android.dll</HintPath>
       <Private>True</Private>
     </Reference>
   </ItemGroup>
@@ -67,9 +67,6 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
-    <None Include="ResolutionBuddy.Android.nuspec">
-      <SubType>Designer</SubType>
-    </None>
     <None Include="Resources\AboutResources.txt" />
   </ItemGroup>
   <ItemGroup>
