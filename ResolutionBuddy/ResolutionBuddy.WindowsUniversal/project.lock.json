@@ -3,7 +3,7 @@
   "version": 2,
   "targets": {
     "UAP,Version=v10.0": {
-      "MatrixExtensions/1.0.0": {
+      "MatrixExtensions/1.0.1": {
         "type": "package",
         "dependencies": {
           "Microsoft.NETCore.UniversalWindowsPlatform": "5.1.0",
@@ -12,7 +12,7 @@
           "SharpDX": "[3.0.0]",
           "SharpDX.Direct2D1": "[3.0.0]",
           "SharpDX.Direct3D11": "[3.0.0]",
-          "Vector2Extensions": "1.0.0"
+          "Vector2Extensions": "1.0.1"
         },
         "compile": {
           "lib/uap10.0/MatrixExtensions.WindowsUniversal.dll": {}
@@ -305,7 +305,7 @@
           "lib/netcore/MonoGame.Framework.dll": {}
         }
       },
-      "RandomExtensions.dmanning23/1.0.0": {
+      "RandomExtensions.dmanning23/1.0.2": {
         "type": "package",
         "dependencies": {
           "Microsoft.NETCore.UniversalWindowsPlatform": "5.1.0"
@@ -1983,7 +1983,7 @@
       }
     },
     "UAP,Version=v10.0/win10-arm": {
-      "MatrixExtensions/1.0.0": {
+      "MatrixExtensions/1.0.1": {
         "type": "package",
         "dependencies": {
           "Microsoft.NETCore.UniversalWindowsPlatform": "5.1.0",
@@ -1992,7 +1992,7 @@
           "SharpDX": "[3.0.0]",
           "SharpDX.Direct2D1": "[3.0.0]",
           "SharpDX.Direct3D11": "[3.0.0]",
-          "Vector2Extensions": "1.0.0"
+          "Vector2Extensions": "1.0.1"
         },
         "compile": {
           "lib/uap10.0/MatrixExtensions.WindowsUniversal.dll": {}
@@ -2234,7 +2234,7 @@
           "lib/netcore/MonoGame.Framework.dll": {}
         }
       },
-      "RandomExtensions.dmanning23/1.0.0": {
+      "RandomExtensions.dmanning23/1.0.2": {
         "type": "package",
         "dependencies": {
           "Microsoft.NETCore.UniversalWindowsPlatform": "5.1.0"
@@ -3829,7 +3829,7 @@
       }
     },
     "UAP,Version=v10.0/win10-arm-aot": {
-      "MatrixExtensions/1.0.0": {
+      "MatrixExtensions/1.0.1": {
         "type": "package",
         "dependencies": {
           "Microsoft.NETCore.UniversalWindowsPlatform": "5.1.0",
@@ -3838,7 +3838,7 @@
           "SharpDX": "[3.0.0]",
           "SharpDX.Direct2D1": "[3.0.0]",
           "SharpDX.Direct3D11": "[3.0.0]",
-          "Vector2Extensions": "1.0.0"
+          "Vector2Extensions": "1.0.1"
         },
         "compile": {
           "lib/uap10.0/MatrixExtensions.WindowsUniversal.dll": {}
@@ -4078,7 +4078,7 @@
           "lib/netcore/MonoGame.Framework.dll": {}
         }
       },
-      "RandomExtensions.dmanning23/1.0.0": {
+      "RandomExtensions.dmanning23/1.0.2": {
         "type": "package",
         "dependencies": {
           "Microsoft.NETCore.UniversalWindowsPlatform": "5.1.0"
@@ -5632,7 +5632,7 @@
       }
     },
     "UAP,Version=v10.0/win10-x64": {
-      "MatrixExtensions/1.0.0": {
+      "MatrixExtensions/1.0.1": {
         "type": "package",
         "dependencies": {
           "Microsoft.NETCore.UniversalWindowsPlatform": "5.1.0",
@@ -5641,7 +5641,7 @@
           "SharpDX": "[3.0.0]",
           "SharpDX.Direct2D1": "[3.0.0]",
           "SharpDX.Direct3D11": "[3.0.0]",
-          "Vector2Extensions": "1.0.0"
+          "Vector2Extensions": "1.0.1"
         },
         "compile": {
           "lib/uap10.0/MatrixExtensions.WindowsUniversal.dll": {}
@@ -5889,7 +5889,7 @@
           "lib/netcore/MonoGame.Framework.dll": {}
         }
       },
-      "RandomExtensions.dmanning23/1.0.0": {
+      "RandomExtensions.dmanning23/1.0.2": {
         "type": "package",
         "dependencies": {
           "Microsoft.NETCore.UniversalWindowsPlatform": "5.1.0"
@@ -7487,7 +7487,7 @@
       }
     },
     "UAP,Version=v10.0/win10-x64-aot": {
-      "MatrixExtensions/1.0.0": {
+      "MatrixExtensions/1.0.1": {
         "type": "package",
         "dependencies": {
           "Microsoft.NETCore.UniversalWindowsPlatform": "5.1.0",
@@ -7496,7 +7496,7 @@
           "SharpDX": "[3.0.0]",
           "SharpDX.Direct2D1": "[3.0.0]",
           "SharpDX.Direct3D11": "[3.0.0]",
-          "Vector2Extensions": "1.0.0"
+          "Vector2Extensions": "1.0.1"
         },
         "compile": {
           "lib/uap10.0/MatrixExtensions.WindowsUniversal.dll": {}
@@ -7736,7 +7736,7 @@
           "lib/netcore/MonoGame.Framework.dll": {}
         }
       },
-      "RandomExtensions.dmanning23/1.0.0": {
+      "RandomExtensions.dmanning23/1.0.2": {
         "type": "package",
         "dependencies": {
           "Microsoft.NETCore.UniversalWindowsPlatform": "5.1.0"
@@ -9290,7 +9290,7 @@
       }
     },
     "UAP,Version=v10.0/win10-x86": {
-      "MatrixExtensions/1.0.0": {
+      "MatrixExtensions/1.0.1": {
         "type": "package",
         "dependencies": {
           "Microsoft.NETCore.UniversalWindowsPlatform": "5.1.0",
@@ -9299,7 +9299,7 @@
           "SharpDX": "[3.0.0]",
           "SharpDX.Direct2D1": "[3.0.0]",
           "SharpDX.Direct3D11": "[3.0.0]",
-          "Vector2Extensions": "1.0.0"
+          "Vector2Extensions": "1.0.1"
         },
         "compile": {
           "lib/uap10.0/MatrixExtensions.WindowsUniversal.dll": {}
@@ -9547,7 +9547,7 @@
           "lib/netcore/MonoGame.Framework.dll": {}
         }
       },
-      "RandomExtensions.dmanning23/1.0.0": {
+      "RandomExtensions.dmanning23/1.0.2": {
         "type": "package",
         "dependencies": {
           "Microsoft.NETCore.UniversalWindowsPlatform": "5.1.0"
@@ -11145,7 +11145,7 @@
       }
     },
     "UAP,Version=v10.0/win10-x86-aot": {
-      "MatrixExtensions/1.0.0": {
+      "MatrixExtensions/1.0.1": {
         "type": "package",
         "dependencies": {
           "Microsoft.NETCore.UniversalWindowsPlatform": "5.1.0",
@@ -11154,7 +11154,7 @@
           "SharpDX": "[3.0.0]",
           "SharpDX.Direct2D1": "[3.0.0]",
           "SharpDX.Direct3D11": "[3.0.0]",
-          "Vector2Extensions": "1.0.0"
+          "Vector2Extensions": "1.0.1"
         },
         "compile": {
           "lib/uap10.0/MatrixExtensions.WindowsUniversal.dll": {}
@@ -11394,7 +11394,7 @@
           "lib/netcore/MonoGame.Framework.dll": {}
         }
       },
-      "RandomExtensions.dmanning23/1.0.0": {
+      "RandomExtensions.dmanning23/1.0.2": {
         "type": "package",
         "dependencies": {
           "Microsoft.NETCore.UniversalWindowsPlatform": "5.1.0"
@@ -12949,11 +12949,11 @@
     }
   },
   "libraries": {
-    "MatrixExtensions/1.0.0": {
-      "sha512": "ffXqfZhbBqmvTYVkrkbGrxaK9LrQOCsTrPJRbPq2NvNyAMHJYj/9vLK+fHf/W1S3oYRyEmGK2+v1zUARa/1MkA==",
+    "MatrixExtensions/1.0.1": {
+      "sha512": "Hzk/58vDlK5qGGKlU/sMm72HJv2hrrQvLP7Nw29iq0BKCpHlwAgq8SEepGeDHdq52MUJDy5jHj1CcoDCAQqcaQ==",
       "type": "package",
       "files": [
-        "MatrixExtensions.1.0.0.nupkg.sha512",
+        "MatrixExtensions.1.0.1.nupkg.sha512",
         "MatrixExtensions.nuspec",
         "lib/MonoAndroid10/MatrixExtensions.Android.dll",
         "lib/MonoAndroid10/MatrixExtensions.Android.pdb",
@@ -13569,11 +13569,11 @@
         "readme.txt"
       ]
     },
-    "RandomExtensions.dmanning23/1.0.0": {
-      "sha512": "mv08W4mY0XUWyJyMI1PssDtikuFs7vy3wK42wg42bSUPOp8C93/bLnK7zLikohmqC0RY3yTAkMTkgl5ZGyXiqQ==",
+    "RandomExtensions.dmanning23/1.0.2": {
+      "sha512": "22haYdcKXA3NTlf00q8cNizCxlLPtCdFNaEmq7M8wB6uy3MgMwGMsGqb2jyIyY0oAsuaqq666bsbuPQ48z5Owg==",
       "type": "package",
       "files": [
-        "RandomExtensions.dmanning23.1.0.0.nupkg.sha512",
+        "RandomExtensions.dmanning23.1.0.2.nupkg.sha512",
         "RandomExtensions.dmanning23.nuspec",
         "lib/MonoAndroid10/RandomExtensions.Android.dll",
         "lib/MonoAndroid10/RandomExtensions.Android.pdb",
@@ -16334,10 +16334,10 @@
   },
   "projectFileDependencyGroups": {
     "": [
-      "MatrixExtensions >= 1.0.0",
+      "MatrixExtensions >= 1.0.1",
       "Microsoft.NETCore.UniversalWindowsPlatform >= 5.1.0",
       "MonoGame.Framework.WindowsUniversal >= 3.5.1.1679",
-      "RandomExtensions.dmanning23 >= 1.0.0",
+      "RandomExtensions.dmanning23 >= 1.0.2",
       "Vector2Extensions >= 1.0.1"
     ],
     "UAP,Version=v10.0": []
