@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 14
-VisualStudioVersion = 14.0.25123.0
+VisualStudioVersion = 14.0.25420.1
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ResolutionBuddy.DesktopGL", "ResolutionBuddy.DesktopGL\ResolutionBuddy.DesktopGL.csproj", "{C70F9E06-3EB4-4EF4-82D8-85F7D013CE30}"
 EndProject
@@ -19,7 +19,17 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution 
 		ResolutionBuddy.nuspec = ResolutionBuddy.nuspec
 	EndProjectSection
 EndProject
+Project("{D954291E-2A0B-460D-934E-DC6B0785DB48}") = "ResolutionBuddy.SharedProject", "ResolutionBuddy.SharedProject\ResolutionBuddy.SharedProject.shproj", "{30AD6316-9429-458E-A160-4F77C9A25D8B}"
+EndProject
 Global
+	GlobalSection(SharedMSBuildProjectFiles) = preSolution
+		ResolutionBuddy.SharedProject\ResolutionBuddy.SharedProject.projitems*{045d779e-dc25-43a8-9d97-abb7d3415386}*SharedItemsImports = 4
+		ResolutionBuddy.SharedProject\ResolutionBuddy.SharedProject.projitems*{24e7a08b-7f79-4c5c-9065-6c064ec29cf2}*SharedItemsImports = 4
+		ResolutionBuddy.SharedProject\ResolutionBuddy.SharedProject.projitems*{30ad6316-9429-458e-a160-4f77c9a25d8b}*SharedItemsImports = 13
+		ResolutionBuddy.SharedProject\ResolutionBuddy.SharedProject.projitems*{5f187d74-303d-47e2-888d-08fae420bdf5}*SharedItemsImports = 4
+		ResolutionBuddy.SharedProject\ResolutionBuddy.SharedProject.projitems*{c70f9e06-3eb4-4ef4-82d8-85f7d013ce30}*SharedItemsImports = 4
+		ResolutionBuddy.SharedProject\ResolutionBuddy.SharedProject.projitems*{d899c887-be45-4b96-9a26-3ec975301fd5}*SharedItemsImports = 4
+	EndGlobalSection
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		AppStore|Any CPU = AppStore|Any CPU
 		AppStore|ARM = AppStore|ARM

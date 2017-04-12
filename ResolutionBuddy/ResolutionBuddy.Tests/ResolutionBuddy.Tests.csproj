@@ -48,12 +48,6 @@
     <Compile Include="ResolutionBuddyTests.cs" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\ResolutionBuddy.DesktopGL\ResolutionBuddy.DesktopGL.csproj">
-      <Project>{c70f9e06-3eb4-4ef4-82d8-85f7d013ce30}</Project>
-      <Name>ResolutionBuddy.WindowsGL</Name>
-    </ProjectReference>
-  </ItemGroup>
-  <ItemGroup>
     <Reference Include="MatrixExtensions.DesktopGL, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\packages\MatrixExtensions.1.0.1\lib\net451\MatrixExtensions.DesktopGL.dll</HintPath>
       <Private>True</Private>
@@ -98,6 +92,7 @@
   <ItemGroup>
     <Service Include="{82A7F48D-3B50-4B1E-B82E-3ADA8210C358}" />
   </ItemGroup>
+  <Import Project="..\ResolutionBuddy.SharedProject\ResolutionBuddy.SharedProject.projitems" Label="Shared" />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Import Project="$(SolutionDir)\.nuget\NuGet.targets" Condition="Exists('$(SolutionDir)\.nuget\NuGet.targets')" />
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
