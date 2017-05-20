@@ -55,6 +55,8 @@ namespace ResolutionBuddy
 		/// </summary>
 		private static bool _dirtyMatrix = true;
 
+		private static Vector2 _pillarBox;
+
 		/// <summary>
 		/// The graphics device
 		/// </summary>
@@ -232,10 +234,13 @@ namespace ResolutionBuddy
 				((float)vp.Y / (float)VirtualRect.Y),
 				1.0f);
 
-			_screenMatrix = Matrix.CreateScale(
+			//trasnlate by the pillar box to account for the border on top/bottom/left/right
+			var translation = Matrix.CreateTranslation(_pillarBox.X, _pillarBox.Y, 0f);
+
+			_screenMatrix = Matrix.Multiply(translation, Matrix.CreateScale(
 				((float)VirtualRect.X / (float)vp.X),
 				((float)VirtualRect.Y / (float)vp.Y),
-				1.0f);
+				1.0f));
 		}
 
 		/// <summary>
@@ -274,6 +279,8 @@ namespace ResolutionBuddy
 				MinDepth = 0,
 				MaxDepth = 1
 			};
+
+			_pillarBox = new Vector2(-viewport.X, -viewport.Y);
 
 			if (changed)
 			{

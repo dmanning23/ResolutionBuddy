@@ -49,7 +49,7 @@
   </ItemGroup>
   <ItemGroup>
     <Reference Include="MatrixExtensions.DesktopGL, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\MatrixExtensions.1.0.1\lib\net451\MatrixExtensions.DesktopGL.dll</HintPath>
+      <HintPath>..\packages\MatrixExtensions.1.0.2\lib\net451\MatrixExtensions.DesktopGL.dll</HintPath>
       <Private>True</Private>
     </Reference>
     <Reference Include="MonoGame.Framework, Version=3.5.1.1679, Culture=neutral, processorArchitecture=MSIL">
@@ -65,11 +65,11 @@
       <Private>True</Private>
     </Reference>
     <Reference Include="RandomExtensions.DesktopGL, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\RandomExtensions.dmanning23.1.0.2\lib\net452\RandomExtensions.DesktopGL.dll</HintPath>
+      <HintPath>..\packages\RandomExtensions.dmanning23.1.0.3\lib\net452\RandomExtensions.DesktopGL.dll</HintPath>
       <Private>True</Private>
     </Reference>
     <Reference Include="Vector2Extensions.DesktopGL, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\Vector2Extensions.1.0.1\lib\net451\Vector2Extensions.DesktopGL.dll</HintPath>
+      <HintPath>..\packages\Vector2Extensions.1.0.6\lib\net451\Vector2Extensions.DesktopGL.dll</HintPath>
       <Private>True</Private>
     </Reference>
     <Reference Include="xunit.abstractions">
