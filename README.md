@@ -40,4 +40,4 @@ protected override void Draw(GameTime gameTime)
 }
 ```
 
-To see an example project, check out <a href="https://github.com/dmanning23/ResolutionBuddyExample">https://github.com/dmanning23/ResolutionBuddyExampleS</a>
+To see an example project, check out <a href="https://github.com/dmanning23/ResolutionBuddyExample">https://github.com/dmanning23/ResolutionBuddyExample</a>
