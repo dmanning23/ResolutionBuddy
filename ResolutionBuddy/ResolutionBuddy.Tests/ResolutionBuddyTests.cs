@@ -1,53 +1,67 @@
 ﻿using Microsoft.Xna.Framework;
+using NUnit.Framework;
 using ResolutionBuddy;
-using Xunit;
+using Shouldly;
 
 namespace ResolutionBuddyTests
 {
+	[TestFixture]
 	public class ResolutionBuddyTests
 	{
-		[Fact]
+		class TestResolutionAdapter : ResolutionAdapter
+		{
+			public new void RecreateScaleMatrix(Point vp)
+			{
+				base.RecreateScaleMatrix(vp);
+			}
+		}
+
+		[Test]
 		public void MatrixSetX()
 		{
-			Resolution.VirtualRect = new Point(100, 50);
-			Resolution.RecreateScaleMatrix(new Point(200, 100));
+			var resolution = new TestResolutionAdapter();
+			resolution.SetVirtualResolution(100, 50);
+			resolution.RecreateScaleMatrix(new Point(200, 100));
 
 			//check scale matrix
-			Assert.Equal(0.5f, Resolution.ScreenMatrix.M11);
+			resolution.ScreenMatrix.M11.ShouldBe(0.5f);
 		}
 
-		[Fact]
+		[Test]
 		public void MatrixSetY()
 		{
-			Resolution.VirtualRect = new Point(100, 50);
-			Resolution.RecreateScaleMatrix(new Point(200, 25));
+			var resolution = new TestResolutionAdapter();
+			resolution.SetVirtualResolution(100, 50);
+			resolution.RecreateScaleMatrix(new Point(200, 25));
 
 			//check scale matrix
-			Assert.Equal(2.0f, Resolution.ScreenMatrix.M22);
+			resolution.ScreenMatrix.M22.ShouldBe(2.0f);
 		}
 
-		[Fact]
+		[Test]
 		public void TransformX()
 		{
-			Resolution.VirtualRect = new Point(100, 50);
-			Resolution.RecreateScaleMatrix(new Point(200, 25));
+			var resolution = new TestResolutionAdapter();
+			resolution.SetVirtualResolution(100, 50);
+			resolution.RecreateScaleMatrix(new Point(200, 25));
 
-			Vector2 trans = Resolution.ScreenToGameCoord(new Vector2(1000.0f, 1000.0f));
+			Vector2 trans = resolution.ScreenToGameCoord(new Vector2(1000.0f, 1000.0f));
 
 			//check scale matrix
-			Assert.Equal(500.0f, trans.X);
+			trans.X.ShouldBe(500.0f);
 		}
 
-		[Fact]
+		[Test]
 		public void TransformY()
 		{
-			Resolution.VirtualRect = new Point(100, 50);
-			Resolution.RecreateScaleMatrix(new Point(200, 25));
+			var resolution = new TestResolutionAdapter();
+			resolution.SetVirtualResolution(100, 50);
+			resolution.RecreateScaleMatrix(new Point(200, 25));
 
-			Vector2 trans = Resolution.ScreenToGameCoord(new Vector2(1000.0f, 1000.0f));
+			Vector2 trans = resolution.ScreenToGameCoord(new Vector2(1000.0f, 1000.0f));
 
 			//check scale matrix
-			Assert.Equal(2000.0f, trans.Y);
+			trans.Y.ShouldBe(2000.0f);
 		}
 	}
 }

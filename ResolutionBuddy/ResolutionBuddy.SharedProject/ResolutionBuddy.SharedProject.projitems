@@ -9,6 +9,9 @@
     <Import_RootNamespace>ResolutionBuddy.SharedProject</Import_RootNamespace>
   </PropertyGroup>
   <ItemGroup>
+    <Compile Include="$(MSBuildThisFileDirectory)IResolution.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Resolution.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)ResolutionAdapter.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)ResolutionComponent.cs" />
   </ItemGroup>
 </Project>
