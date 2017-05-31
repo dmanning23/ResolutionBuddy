@@ -1,9 +1,24 @@
 ﻿using Microsoft.Xna.Framework;
+using System;
 
 namespace ResolutionBuddy
 {
 	public class ResolutionComponent : DrawableGameComponent, IResolution
 	{
+		#region Fields
+
+		private Point _virtualResolution;
+
+		private Point _screenResolution;
+
+		private bool _fullscreen;
+
+		private bool _letterbox;
+
+		private readonly GraphicsDeviceManager _graphics;
+
+		#endregion //Fields
+
 		#region Properties
 
 		private ResolutionAdapter ResolutionAdapter { get; set; }
@@ -32,15 +47,69 @@ namespace ResolutionBuddy
 			}
 		}
 
-		private readonly Point _virtualResolution;
+		public Point VirtualResolution
+		{
+			get
+			{
+				return _virtualResolution;
+			}
+			set
+			{
+				if (null != ResolutionAdapter)
+				{
+					throw new Exception("Can't change VirtualResolution after the ResolutionComponent has been initialized");
+				}
+				_virtualResolution = value;
+			}
+		}
 
-		private readonly Point _screenResolution;
+		public Point ScreenResolution
+		{
+			get
+			{
+				return _screenResolution;
+			}
+			set
+			{
+				if (null != ResolutionAdapter)
+				{
+					throw new Exception("Can't change ScreenResolution after the ResolutionComponent has been initialized");
+				}
+				_screenResolution = value;
+			}
+		}
 
-		private readonly bool _fullscreen;
+		public bool FullScreen
+		{
+			get
+			{
+				return _fullscreen;
+			}
+			set
+			{
+				if (null != ResolutionAdapter)
+				{
+					throw new Exception("Can't change FullScreen after the ResolutionComponent has been initialized");
+				}
+				_fullscreen = value;
+			}
+		}
 
-		private readonly bool _letterbox;
-
-		private readonly GraphicsDeviceManager _graphics;
+		public bool LetterBox
+		{
+			get
+			{
+				return _letterbox;
+			}
+			set
+			{
+				if (null != ResolutionAdapter)
+				{
+					throw new Exception("Can't change LetterBox after the ResolutionComponent has been initialized");
+				}
+				_letterbox = value;
+			}
+		}
 
 		#endregion //Properties
 
@@ -58,8 +127,8 @@ namespace ResolutionBuddy
 		public ResolutionComponent(Game game, GraphicsDeviceManager graphics, Point virtualResolution, Point screenResolution, bool fullscreen, bool letterbox) : base(game)
 		{
 			_graphics = graphics;
-			_virtualResolution = virtualResolution;
-			_screenResolution = screenResolution;
+			VirtualResolution = virtualResolution;
+			ScreenResolution = screenResolution;
 			_fullscreen = fullscreen;
 			_letterbox = letterbox;
 
@@ -76,8 +145,8 @@ namespace ResolutionBuddy
 
 			//initialize the ResolutionAdapter object
 			ResolutionAdapter = new ResolutionAdapter(_graphics);
-			ResolutionAdapter.SetVirtualResolution(_virtualResolution.X, _virtualResolution.Y);
-			ResolutionAdapter.SetScreenResolution(_screenResolution.X, _screenResolution.Y, _fullscreen, _letterbox);
+			ResolutionAdapter.SetVirtualResolution(VirtualResolution.X, VirtualResolution.Y);
+			ResolutionAdapter.SetScreenResolution(ScreenResolution.X, ScreenResolution.Y, _fullscreen, _letterbox);
 			ResolutionAdapter.ResetViewport();
 
 			//initialize the Resolution singleton
