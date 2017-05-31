@@ -19,6 +19,10 @@ namespace ResolutionBuddy
 		/// </summary>
 		Matrix ScreenMatrix { get; }
 
+		Point VirtualResolution { get; set; }
+
+		Point ScreenResolution { get; set; }
+
 		/// <summary>
 		/// Matrix to convert game coordinates to screen coordinates. Pass into Spritebatch.BeginDraw or this thing won't work
 		/// </summary>

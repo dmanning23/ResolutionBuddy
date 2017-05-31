@@ -1,4 +1,5 @@
-﻿using MatrixExtensions;
+﻿using System;
+using MatrixExtensions;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 
@@ -102,6 +103,30 @@ namespace ResolutionBuddy
 			get
 			{
 				return _screenResolution.X / (float)_screenResolution.Y;
+			}
+		}
+
+		public Point VirtualResolution
+		{
+			get
+			{
+				return _virtualResolution;
+			}
+			set
+			{
+				SetVirtualResolution(value.X, value.Y);
+			}
+		}
+
+		public Point ScreenResolution
+		{
+			get
+			{
+				return _screenResolution;
+			}
+			set
+			{
+				SetScreenResolution(value.X, value.Y, _fullScreen, _letterBox);
 			}
 		}
 
