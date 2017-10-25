@@ -62,6 +62,11 @@ namespace ResolutionBuddy
 			return _resolution.ScreenToGameCoord(screenCoord);
 		}
 
+		public static void ResetViewport()
+		{
+			_resolution.ResetViewport();
+		}
+
 		#endregion //Methods
 	}
 }

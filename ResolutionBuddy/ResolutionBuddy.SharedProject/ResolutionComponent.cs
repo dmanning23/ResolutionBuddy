@@ -171,6 +171,12 @@ namespace ResolutionBuddy
 			base.Draw(gameTime);
 		}
 
+		public void ResetViewport()
+		{
+			//Calculate Proper Viewport according to Aspect Ratio
+			ResolutionAdapter.ResetViewport();
+		}
+
 		#endregion //Methods
 	}
 }

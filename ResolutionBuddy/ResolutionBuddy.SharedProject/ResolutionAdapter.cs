@@ -320,37 +320,40 @@ namespace ResolutionBuddy
 		public void ResetViewport()
 		{
 			// figure out the largest area that fits in this resolution at the desired aspect ratio
-			int width = Device.PreferredBackBufferWidth;
+			int width = Device.GraphicsDevice.Viewport.Width;
 			var height = (int)(width / VirtualAspectRatio + .5f);
 			bool changed = false;
 
-			if (height > Device.PreferredBackBufferHeight)
+			if (height != Device.GraphicsDevice.Viewport.Height || width != Device.GraphicsDevice.Viewport.Width)
 			{
-				// PillarBox
-				height = Device.PreferredBackBufferHeight;
-				width = (int)(height * VirtualAspectRatio + .5f);
-				changed = true;
+				if (height > Device.GraphicsDevice.Viewport.Height)
+				{
+					// PillarBox
+					height = Device.PreferredBackBufferHeight;
+					width = (int)(height * VirtualAspectRatio + .5f);
+					changed = true;
+				}
+
+				// set up the new viewport centered in the backbuffer
+				var viewport = new Viewport()
+				{
+					X = (Device.PreferredBackBufferWidth / 2) - (width / 2),
+					Y = (Device.PreferredBackBufferHeight / 2) - (height / 2),
+					Width = width,
+					Height = height,
+					MinDepth = 0,
+					MaxDepth = 1
+				};
+
+				_pillarBox = new Vector2(-viewport.X, -viewport.Y);
+
+				if (changed)
+				{
+					_dirtyMatrix = true;
+				}
+
+				Device.GraphicsDevice.Viewport = viewport;
 			}
-
-			// set up the new viewport centered in the backbuffer
-			var viewport = new Viewport()
-			{
-				X = (Device.PreferredBackBufferWidth / 2) - (width / 2),
-				Y = (Device.PreferredBackBufferHeight / 2) - (height / 2),
-				Width = width,
-				Height = height,
-				MinDepth = 0,
-				MaxDepth = 1
-			};
-
-			_pillarBox = new Vector2(-viewport.X, -viewport.Y);
-
-			if (changed)
-			{
-				_dirtyMatrix = true;
-			}
-
-			Device.GraphicsDevice.Viewport = viewport;
 		}
 
 		#endregion //Methods

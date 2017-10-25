@@ -35,5 +35,7 @@ namespace ResolutionBuddy
 		/// <param name="screenCoord"></param>
 		/// <returns></returns>
 		Vector2 ScreenToGameCoord(Vector2 screenCoord);
+
+		void ResetViewport();
 	}
 }
