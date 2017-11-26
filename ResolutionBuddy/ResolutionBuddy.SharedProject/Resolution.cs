@@ -43,10 +43,10 @@ namespace ResolutionBuddy
 		#endregion Initialization
 
 		/// <summary>
-			/// Get the transformation matrix for when you call SpriteBatch.Begin
-			/// To add this to a camera matrix, do CameraMatrix * TransformationMatrix
-			/// </summary>
-			/// <returns>The matrix.</returns>
+		/// Get the transformation matrix for when you call SpriteBatch.Begin
+		/// To add this to a camera matrix, do CameraMatrix * TransformationMatrix
+		/// </summary>
+		/// <returns>The matrix.</returns>
 		public static Matrix TransformationMatrix()
 		{
 			return _resolution.TransformationMatrix();
