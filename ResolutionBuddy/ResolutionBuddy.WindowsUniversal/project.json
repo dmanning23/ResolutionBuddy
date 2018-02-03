@@ -1,10 +1,10 @@
 ﻿{
   "dependencies": {
-    "MatrixExtensions": "1.0.2",
+    "MatrixExtensions": "1.0.3",
     "Microsoft.NETCore.UniversalWindowsPlatform": "5.2.2",
     "MonoGame.Framework.WindowsUniversal": "3.6.0.1625",
     "RandomExtensions.dmanning23": "1.0.4",
-    "Vector2Extensions": "1.0.8"
+    "Vector2Extensions": "1.0.9"
   },
   "frameworks": {
     "uap10.0.10586": {}

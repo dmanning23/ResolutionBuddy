@@ -2,7 +2,7 @@
 <package xmlns="http://schemas.microsoft.com/packaging/2011/08/nuspec.xsd">
 	<metadata>
 		<id>ResolutionBuddy</id>
-		<version>1.0.12</version>
+		<version>1.0.16</version>
 		<title>ResolutionBuddy</title>
 		<authors>dmanning23</authors>
 		<owners>dmanning23</owners>
@@ -44,7 +44,7 @@
 			</group>
 
 			<group targetFramework="net451">
-				<dependency id="MonoGame.Framework.DesktopGL" version="3.5"/>
+				<dependency id="MonoGame.Framework.WindowsDX" version="3.5"/>
 				<dependency id="RandomExtensions.dmanning23" version="1.0"/>
 				<dependency id="Vector2Extensions" version="1.0.1"/>
 				<dependency id="MatrixExtensions" version="1.0"/>
@@ -66,9 +66,9 @@
 		<file src="ResolutionBuddy.WindowsUniversal\bin\Release\ResolutionBuddy.WindowsUniversal.pdb" target="lib\uap10.0\ResolutionBuddy.WindowsUniversal.pdb" />
 		<file src="ResolutionBuddy.WindowsUniversal\bin\Release\ResolutionBuddy.WindowsUniversal.dll" target="lib\uap10.0\ResolutionBuddy.WindowsUniversal.dll" />
 
-		<!--DesktopGL-->
-		<file src="ResolutionBuddy.DesktopGL\bin\Release\ResolutionBuddy.DesktopGL.pdb" target="lib\net451\ResolutionBuddy.DesktopGL.pdb" />
-		<file src="ResolutionBuddy.DesktopGL\bin\Release\ResolutionBuddy.DesktopGL.dll" target="lib\net451\ResolutionBuddy.DesktopGL.dll" />
+		<!--WindowsDX-->
+		<file src="ResolutionBuddy.WindowsDX\bin\Release\ResolutionBuddy.WindowsDX.pdb" target="lib\net451\ResolutionBuddy.WindowsDX.pdb" />
+		<file src="ResolutionBuddy.WindowsDX\bin\Release\ResolutionBuddy.WindowsDX.dll" target="lib\net451\ResolutionBuddy.WindowsDX.dll" />
 
 	</files>
 </package>
