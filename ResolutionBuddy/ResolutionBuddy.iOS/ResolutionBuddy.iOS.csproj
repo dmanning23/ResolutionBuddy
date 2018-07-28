@@ -38,13 +38,13 @@
       <HintPath>..\packages\MonoGame.Framework.iOS.3.6.0.1625\lib\XamariniOS\MonoGame.Framework.dll</HintPath>
     </Reference>
     <Reference Include="RandomExtensions.iOS, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\RandomExtensions.dmanning23.1.0.4\lib\Xamarin.iOS10\RandomExtensions.iOS.dll</HintPath>
+      <HintPath>..\packages\RandomExtensions.dmanning23.1.0.6\lib\Xamarin.iOS10\RandomExtensions.iOS.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Xml" />
     <Reference Include="System.Core" />
     <Reference Include="Vector2Extensions.iOS, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\Vector2Extensions.1.0.9\lib\Xamarin.iOS10\Vector2Extensions.iOS.dll</HintPath>
+      <HintPath>..\packages\Vector2Extensions.1.0.11\lib\Xamarin.iOS10\Vector2Extensions.iOS.dll</HintPath>
     </Reference>
     <Reference Include="Xamarin.iOS" />
   </ItemGroup>

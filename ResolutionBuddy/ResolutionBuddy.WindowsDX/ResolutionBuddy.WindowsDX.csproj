@@ -37,8 +37,8 @@
       <HintPath>..\packages\MonoGame.Framework.WindowsDX.3.6.0.1625\lib\net40\MonoGame.Framework.dll</HintPath>
       <Private>True</Private>
     </Reference>
-    <Reference Include="RandomExtensions.DesktopGL, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\RandomExtensions.dmanning23.1.0.4\lib\net452\RandomExtensions.DesktopGL.dll</HintPath>
+    <Reference Include="RandomExtensions.WindowsDX, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\RandomExtensions.dmanning23.1.0.6\lib\net452\RandomExtensions.WindowsDX.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
@@ -49,7 +49,7 @@
     <Reference Include="System.Net.Http" />
     <Reference Include="System.Xml" />
     <Reference Include="Vector2Extensions.WindowsDX, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\Vector2Extensions.1.0.9\lib\net451\Vector2Extensions.WindowsDX.dll</HintPath>
+      <HintPath>..\packages\Vector2Extensions.1.0.11\lib\net451\Vector2Extensions.WindowsDX.dll</HintPath>
     </Reference>
   </ItemGroup>
   <ItemGroup>
