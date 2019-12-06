@@ -2,6 +2,12 @@
 [Bb]in/
 [Oo]bj/
 
+# ignore Xamarin.Android Resource.Designer.cs files
+**/*.Droid/**/[Rr]esource.[Dd]esigner.cs
+**/*.Android/**/[Rr]esource.[Dd]esigner.cs
+**/Android/**/[Rr]esource.[Dd]esigner.cs
+**/Droid/**/[Rr]esource.[Dd]esigner.cs
+
 # mstest test results
 TestResults
 
@@ -37,8 +43,23 @@ x64/
 *.vssscc
 .builds
 *.userprefs
+*.cachefile
+*.apk
+*.nupkg
+*csproj.bak
+.DS_Store
+._.DS_Store
+UpgradeLog.htm
+project.lock.json
+
+# pixelmator temp files
+._*.png
+._*.pxm
+._*.psd
+._*
 
 # Visual C++ cache files
+.vs/
 ipch/
 *.aps
 *.ncb
