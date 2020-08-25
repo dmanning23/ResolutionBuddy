@@ -1,15 +1,13 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio 15
-VisualStudioVersion = 15.0.27130.2024
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.30225.117
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ResolutionBuddy.Android", "ResolutionBuddy.Android\ResolutionBuddy.Android.csproj", "{D899C887-BE45-4B96-9A26-3EC975301FD5}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ResolutionBuddy.Tests", "ResolutionBuddy.Tests\ResolutionBuddy.Tests.csproj", "{24E7A08B-7F79-4C5C-9065-6C064EC29CF2}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ResolutionBuddy.iOS", "ResolutionBuddy.iOS\ResolutionBuddy.iOS.csproj", "{045D779E-DC25-43A8-9D97-ABB7D3415386}"
-EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ResolutionBuddy.WindowsUniversal", "ResolutionBuddy.WindowsUniversal\ResolutionBuddy.WindowsUniversal.csproj", "{5F187D74-303D-47E2-888D-08FAE420BDF5}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{5261DCE8-9EB9-4E73-AD09-BB7C4EF5A252}"
 	ProjectSection(SolutionItems) = preProject
@@ -26,7 +24,6 @@ Global
 		ResolutionBuddy.SharedProject\ResolutionBuddy.SharedProject.projitems*{045d779e-dc25-43a8-9d97-abb7d3415386}*SharedItemsImports = 4
 		ResolutionBuddy.SharedProject\ResolutionBuddy.SharedProject.projitems*{24e7a08b-7f79-4c5c-9065-6c064ec29cf2}*SharedItemsImports = 4
 		ResolutionBuddy.SharedProject\ResolutionBuddy.SharedProject.projitems*{30ad6316-9429-458e-a160-4f77c9a25d8b}*SharedItemsImports = 13
-		ResolutionBuddy.SharedProject\ResolutionBuddy.SharedProject.projitems*{5f187d74-303d-47e2-888d-08fae420bdf5}*SharedItemsImports = 4
 		ResolutionBuddy.SharedProject\ResolutionBuddy.SharedProject.projitems*{ce80a892-e536-4d86-9226-1fe3f55dffa5}*SharedItemsImports = 4
 		ResolutionBuddy.SharedProject\ResolutionBuddy.SharedProject.projitems*{d899c887-be45-4b96-9a26-3ec975301fd5}*SharedItemsImports = 4
 	EndGlobalSection
@@ -117,30 +114,6 @@ Global
 		{045D779E-DC25-43A8-9D97-ABB7D3415386}.Release|x64.Build.0 = Release|Any CPU
 		{045D779E-DC25-43A8-9D97-ABB7D3415386}.Release|x86.ActiveCfg = Release|Any CPU
 		{045D779E-DC25-43A8-9D97-ABB7D3415386}.Release|x86.Build.0 = Release|Any CPU
-		{5F187D74-303D-47E2-888D-08FAE420BDF5}.AppStore|Any CPU.ActiveCfg = Release|Any CPU
-		{5F187D74-303D-47E2-888D-08FAE420BDF5}.AppStore|Any CPU.Build.0 = Release|Any CPU
-		{5F187D74-303D-47E2-888D-08FAE420BDF5}.AppStore|ARM.ActiveCfg = Release|ARM
-		{5F187D74-303D-47E2-888D-08FAE420BDF5}.AppStore|ARM.Build.0 = Release|ARM
-		{5F187D74-303D-47E2-888D-08FAE420BDF5}.AppStore|x64.ActiveCfg = Release|x64
-		{5F187D74-303D-47E2-888D-08FAE420BDF5}.AppStore|x64.Build.0 = Release|x64
-		{5F187D74-303D-47E2-888D-08FAE420BDF5}.AppStore|x86.ActiveCfg = Release|x86
-		{5F187D74-303D-47E2-888D-08FAE420BDF5}.AppStore|x86.Build.0 = Release|x86
-		{5F187D74-303D-47E2-888D-08FAE420BDF5}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{5F187D74-303D-47E2-888D-08FAE420BDF5}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{5F187D74-303D-47E2-888D-08FAE420BDF5}.Debug|ARM.ActiveCfg = Debug|ARM
-		{5F187D74-303D-47E2-888D-08FAE420BDF5}.Debug|ARM.Build.0 = Debug|ARM
-		{5F187D74-303D-47E2-888D-08FAE420BDF5}.Debug|x64.ActiveCfg = Debug|x64
-		{5F187D74-303D-47E2-888D-08FAE420BDF5}.Debug|x64.Build.0 = Debug|x64
-		{5F187D74-303D-47E2-888D-08FAE420BDF5}.Debug|x86.ActiveCfg = Debug|x86
-		{5F187D74-303D-47E2-888D-08FAE420BDF5}.Debug|x86.Build.0 = Debug|x86
-		{5F187D74-303D-47E2-888D-08FAE420BDF5}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{5F187D74-303D-47E2-888D-08FAE420BDF5}.Release|Any CPU.Build.0 = Release|Any CPU
-		{5F187D74-303D-47E2-888D-08FAE420BDF5}.Release|ARM.ActiveCfg = Release|ARM
-		{5F187D74-303D-47E2-888D-08FAE420BDF5}.Release|ARM.Build.0 = Release|ARM
-		{5F187D74-303D-47E2-888D-08FAE420BDF5}.Release|x64.ActiveCfg = Release|x64
-		{5F187D74-303D-47E2-888D-08FAE420BDF5}.Release|x64.Build.0 = Release|x64
-		{5F187D74-303D-47E2-888D-08FAE420BDF5}.Release|x86.ActiveCfg = Release|x86
-		{5F187D74-303D-47E2-888D-08FAE420BDF5}.Release|x86.Build.0 = Release|x86
 		{CE80A892-E536-4D86-9226-1FE3F55DFFA5}.AppStore|Any CPU.ActiveCfg = Release|Any CPU
 		{CE80A892-E536-4D86-9226-1FE3F55DFFA5}.AppStore|Any CPU.Build.0 = Release|Any CPU
 		{CE80A892-E536-4D86-9226-1FE3F55DFFA5}.AppStore|ARM.ActiveCfg = Release|Any CPU

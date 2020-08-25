@@ -177,21 +177,16 @@ namespace ResolutionBuddy
 		/// <summary>
 		/// Sets the screen we are going to use for the screen
 		/// </summary>
-		/// <param name="Width">Width.</param>
-		/// <param name="Height">Height.</param>
-		/// <param name="FullScreen">If set to <c>true</c> full screen.</param>
-		public void SetScreenResolution(int Width, int Height, bool FullScreen, bool letterbox)
+		/// <param name="width">Width.</param>
+		/// <param name="height">Height.</param>
+		/// <param name="fullScreen">If set to <c>true</c> full screen.</param>
+		public void SetScreenResolution(int width, int height, bool fullScreen, bool letterbox)
 		{
-			_screenResolution.X = Width;
-			_screenResolution.Y = Height;
+			_screenResolution.X = width;
+			_screenResolution.Y = height;
 			_letterBox = letterbox;
 
-#if ANDROID || OUYA || __IOS__
-			//Android is always fullscreen
-			_fullScreen = true;
-#else
-			_fullScreen = FullScreen;
-#endif
+			_fullScreen = fullScreen;
 
 			ApplyResolutionSettings();
 		}

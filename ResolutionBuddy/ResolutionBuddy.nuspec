@@ -2,7 +2,7 @@
 <package xmlns="http://schemas.microsoft.com/packaging/2011/08/nuspec.xsd">
 	<metadata>
 		<id>ResolutionBuddy</id>
-		<version>2.0.1</version>
+		<version>2.0.2</version>
 		<title>ResolutionBuddy</title>
 		<authors>dmanning23</authors>
 		<owners>dmanning23</owners>
@@ -31,15 +31,6 @@
 				<dependency id="MatrixExtensions" version="2.0"/>
 			</group>
 
-			<!--Win Universal-->
-			<group targetFramework="uap10.0">
-				<dependency id="MonoGame.Framework.WindowsUniversal" version="3.7"/>
-				<dependency id="Microsoft.NETCore.UniversalWindowsPlatform" version="6.1"/>
-				<dependency id="RandomExtensions.dmanning23" version="2.0"/>
-				<dependency id="Vector2Extensions" version="2.0"/>
-				<dependency id="MatrixExtensions" version="2.0"/>
-			</group>
-
 			<group targetFramework="net451">
 				<dependency id="MonoGame.Framework.WindowsDX" version="3.7"/>
 				<dependency id="RandomExtensions.dmanning23" version="2.0"/>
@@ -58,10 +49,6 @@
 		<!--Xamarin.iOS Unified-->
 		<file src="ResolutionBuddy.iOS\bin\Release\ResolutionBuddy.iOS.pdb" target="lib\Xamarin.iOS10\ResolutionBuddy.iOS.pdb" />
 		<file src="ResolutionBuddy.iOS\bin\Release\ResolutionBuddy.iOS.dll" target="lib\Xamarin.iOS10\ResolutionBuddy.iOS.dll" />
-
-		<!--Windows Universal-->
-		<file src="ResolutionBuddy.WindowsUniversal\bin\Release\ResolutionBuddy.WindowsUniversal.pdb" target="lib\uap10.0\ResolutionBuddy.WindowsUniversal.pdb" />
-		<file src="ResolutionBuddy.WindowsUniversal\bin\Release\ResolutionBuddy.WindowsUniversal.dll" target="lib\uap10.0\ResolutionBuddy.WindowsUniversal.dll" />
 
 		<!--WindowsDX-->
 		<file src="ResolutionBuddy.WindowsDX\bin\Release\ResolutionBuddy.WindowsDX.pdb" target="lib\net451\ResolutionBuddy.WindowsDX.pdb" />

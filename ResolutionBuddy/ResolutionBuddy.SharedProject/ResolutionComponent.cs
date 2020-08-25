@@ -122,7 +122,7 @@ namespace ResolutionBuddy
 		/// <param name="graphics"></param>
 		/// <param name="virtualResolution">The dimensions of the desired virtual resolution</param>
 		/// <param name="screenResolution">The desired screen dimensions</param>
-		/// <param name="fullscreen">Whether or not to fullscreen the game (Always true on android & ios)</param>
+		/// <param name="fullscreen">Whether or not to fullscreen the game</param>
 		/// <param name="letterbox">Whether to add letterboxing, or change the virtual resoltuion to match aspect ratio of screen resolution.</param>
 		public ResolutionComponent(Game game, GraphicsDeviceManager graphics, Point virtualResolution, Point screenResolution, bool fullscreen, bool letterbox) : base(game)
 		{
