@@ -45,6 +45,8 @@ namespace ResolutionBuddy
 		/// </summary>
 		private bool _fullScreen;
 
+		private bool _useDeviceResolution;
+
 		/// <summary>
 		/// whether or not the matrix needs to be recreated
 		/// </summary>
@@ -126,7 +128,7 @@ namespace ResolutionBuddy
 			}
 			set
 			{
-				SetScreenResolution(value.X, value.Y, _fullScreen, _letterBox);
+				SetScreenResolution(value.X, value.Y, _fullScreen, _letterBox, _useDeviceResolution);
 			}
 		}
 
@@ -180,11 +182,12 @@ namespace ResolutionBuddy
 		/// <param name="width">Width.</param>
 		/// <param name="height">Height.</param>
 		/// <param name="fullScreen">If set to <c>true</c> full screen.</param>
-		public void SetScreenResolution(int width, int height, bool fullScreen, bool letterbox)
+		public void SetScreenResolution(int width, int height, bool fullScreen, bool letterbox, bool? useDeviceResolution)
 		{
 			_screenResolution.X = width;
 			_screenResolution.Y = height;
 			_letterBox = letterbox;
+			_useDeviceResolution = useDeviceResolution.HasValue ? useDeviceResolution.Value : fullScreen;
 
 			_fullScreen = fullScreen;
 
@@ -195,7 +198,7 @@ namespace ResolutionBuddy
 		{
 			// If we aren't using a full screen mode, the height and width of the window can
 			// be set to anything equal to or smaller than the actual screen size.
-			if (!_fullScreen)
+			if (!_fullScreen && !_useDeviceResolution)
 			{
 				//Make sure the width isn't bigger than the screen
 				if (_screenResolution.X > GraphicsAdapter.DefaultAdapter.CurrentDisplayMode.Width)
