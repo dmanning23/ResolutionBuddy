@@ -3,9 +3,15 @@ using System;
 
 namespace ResolutionBuddy
 {
-	public class ResolutionComponent : DrawableGameComponent, IResolution
+	public class ResolutionComponent :
+#if !BRIDGE
+		DrawableGameComponent,
+#else
+		GameComponent,
+#endif
+		IResolution
 	{
-		#region Fields
+#region Fields
 
 		private Point _virtualResolution;
 
@@ -17,9 +23,9 @@ namespace ResolutionBuddy
 
 		private readonly GraphicsDeviceManager _graphics;
 
-		#endregion //Fields
+#endregion //Fields
 
-		#region Properties
+#region Properties
 
 		private ResolutionAdapter ResolutionAdapter { get; set; }
 
@@ -128,9 +134,9 @@ namespace ResolutionBuddy
 			}
 		}
 
-		#endregion //Properties
+#endregion //Properties
 
-		#region Methods
+#region Methods
 
 		/// <summary>
 		/// Create the resolution component!
@@ -181,6 +187,8 @@ namespace ResolutionBuddy
 			return ResolutionAdapter.TransformationMatrix();
 		}
 
+		//If running this in a Bridge project, will need to manually call ResolutionAdapter.ResetViewport() in Game.Draw()
+#if !BRIDGE
 		public override void Draw(GameTime gameTime)
 		{
 			//Calculate Proper Viewport according to Aspect Ratio
@@ -188,6 +196,7 @@ namespace ResolutionBuddy
 
 			base.Draw(gameTime);
 		}
+#endif
 
 		public void ResetViewport()
 		{
@@ -195,6 +204,6 @@ namespace ResolutionBuddy
 			ResolutionAdapter.ResetViewport();
 		}
 
-		#endregion //Methods
+#endregion //Methods
 	}
 }
