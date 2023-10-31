@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio Version 16
-VisualStudioVersion = 16.0.30225.117
+# Visual Studio Version 17
+VisualStudioVersion = 17.7.34031.279
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ResolutionBuddy.Android", "ResolutionBuddy.Android\ResolutionBuddy.Android.csproj", "{D899C887-BE45-4B96-9A26-3EC975301FD5}"
 EndProject
@@ -12,7 +12,6 @@ EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{5261DCE8-9EB9-4E73-AD09-BB7C4EF5A252}"
 	ProjectSection(SolutionItems) = preProject
 		buildNugetPackages.ps1 = buildNugetPackages.ps1
-		ResolutionBuddy.Bridge.nuspec = ResolutionBuddy.Bridge.nuspec
 		ResolutionBuddy.nuspec = ResolutionBuddy.nuspec
 	EndProjectSection
 EndProject
@@ -20,17 +19,7 @@ Project("{D954291E-2A0B-460D-934E-DC6B0785DB48}") = "ResolutionBuddy.SharedProje
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ResolutionBuddy.WindowsDX", "ResolutionBuddy.WindowsDX\ResolutionBuddy.WindowsDX.csproj", "{CE80A892-E536-4D86-9226-1FE3F55DFFA5}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ResolutionBuddy.Bridge", "ResolutionBuddy.Bridge\ResolutionBuddy.Bridge.csproj", "{21586335-6D49-4B94-AB23-AC05F7BE021F}"
-EndProject
 Global
-	GlobalSection(SharedMSBuildProjectFiles) = preSolution
-		ResolutionBuddy.SharedProject\ResolutionBuddy.SharedProject.projitems*{045d779e-dc25-43a8-9d97-abb7d3415386}*SharedItemsImports = 4
-		ResolutionBuddy.SharedProject\ResolutionBuddy.SharedProject.projitems*{21586335-6d49-4b94-ab23-ac05f7be021f}*SharedItemsImports = 4
-		ResolutionBuddy.SharedProject\ResolutionBuddy.SharedProject.projitems*{24e7a08b-7f79-4c5c-9065-6c064ec29cf2}*SharedItemsImports = 4
-		ResolutionBuddy.SharedProject\ResolutionBuddy.SharedProject.projitems*{30ad6316-9429-458e-a160-4f77c9a25d8b}*SharedItemsImports = 13
-		ResolutionBuddy.SharedProject\ResolutionBuddy.SharedProject.projitems*{ce80a892-e536-4d86-9226-1fe3f55dffa5}*SharedItemsImports = 4
-		ResolutionBuddy.SharedProject\ResolutionBuddy.SharedProject.projitems*{d899c887-be45-4b96-9a26-3ec975301fd5}*SharedItemsImports = 4
-	EndGlobalSection
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		AppStore|Any CPU = AppStore|Any CPU
 		AppStore|ARM = AppStore|ARM
@@ -142,35 +131,18 @@ Global
 		{CE80A892-E536-4D86-9226-1FE3F55DFFA5}.Release|x64.Build.0 = Release|Any CPU
 		{CE80A892-E536-4D86-9226-1FE3F55DFFA5}.Release|x86.ActiveCfg = Release|Any CPU
 		{CE80A892-E536-4D86-9226-1FE3F55DFFA5}.Release|x86.Build.0 = Release|Any CPU
-		{21586335-6D49-4B94-AB23-AC05F7BE021F}.AppStore|Any CPU.ActiveCfg = Debug|Any CPU
-		{21586335-6D49-4B94-AB23-AC05F7BE021F}.AppStore|Any CPU.Build.0 = Debug|Any CPU
-		{21586335-6D49-4B94-AB23-AC05F7BE021F}.AppStore|ARM.ActiveCfg = Debug|Any CPU
-		{21586335-6D49-4B94-AB23-AC05F7BE021F}.AppStore|ARM.Build.0 = Debug|Any CPU
-		{21586335-6D49-4B94-AB23-AC05F7BE021F}.AppStore|x64.ActiveCfg = Debug|Any CPU
-		{21586335-6D49-4B94-AB23-AC05F7BE021F}.AppStore|x64.Build.0 = Debug|Any CPU
-		{21586335-6D49-4B94-AB23-AC05F7BE021F}.AppStore|x86.ActiveCfg = Debug|Any CPU
-		{21586335-6D49-4B94-AB23-AC05F7BE021F}.AppStore|x86.Build.0 = Debug|Any CPU
-		{21586335-6D49-4B94-AB23-AC05F7BE021F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{21586335-6D49-4B94-AB23-AC05F7BE021F}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{21586335-6D49-4B94-AB23-AC05F7BE021F}.Debug|ARM.ActiveCfg = Debug|Any CPU
-		{21586335-6D49-4B94-AB23-AC05F7BE021F}.Debug|ARM.Build.0 = Debug|Any CPU
-		{21586335-6D49-4B94-AB23-AC05F7BE021F}.Debug|x64.ActiveCfg = Debug|Any CPU
-		{21586335-6D49-4B94-AB23-AC05F7BE021F}.Debug|x64.Build.0 = Debug|Any CPU
-		{21586335-6D49-4B94-AB23-AC05F7BE021F}.Debug|x86.ActiveCfg = Debug|Any CPU
-		{21586335-6D49-4B94-AB23-AC05F7BE021F}.Debug|x86.Build.0 = Debug|Any CPU
-		{21586335-6D49-4B94-AB23-AC05F7BE021F}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{21586335-6D49-4B94-AB23-AC05F7BE021F}.Release|Any CPU.Build.0 = Release|Any CPU
-		{21586335-6D49-4B94-AB23-AC05F7BE021F}.Release|ARM.ActiveCfg = Release|Any CPU
-		{21586335-6D49-4B94-AB23-AC05F7BE021F}.Release|ARM.Build.0 = Release|Any CPU
-		{21586335-6D49-4B94-AB23-AC05F7BE021F}.Release|x64.ActiveCfg = Release|Any CPU
-		{21586335-6D49-4B94-AB23-AC05F7BE021F}.Release|x64.Build.0 = Release|Any CPU
-		{21586335-6D49-4B94-AB23-AC05F7BE021F}.Release|x86.ActiveCfg = Release|Any CPU
-		{21586335-6D49-4B94-AB23-AC05F7BE021F}.Release|x86.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {E50498FA-EA07-4FE6-81EC-5EA3D1D9BC40}
+	EndGlobalSection
+	GlobalSection(SharedMSBuildProjectFiles) = preSolution
+		ResolutionBuddy.SharedProject\ResolutionBuddy.SharedProject.projitems*{045d779e-dc25-43a8-9d97-abb7d3415386}*SharedItemsImports = 4
+		ResolutionBuddy.SharedProject\ResolutionBuddy.SharedProject.projitems*{24e7a08b-7f79-4c5c-9065-6c064ec29cf2}*SharedItemsImports = 4
+		ResolutionBuddy.SharedProject\ResolutionBuddy.SharedProject.projitems*{30ad6316-9429-458e-a160-4f77c9a25d8b}*SharedItemsImports = 13
+		ResolutionBuddy.SharedProject\ResolutionBuddy.SharedProject.projitems*{ce80a892-e536-4d86-9226-1fe3f55dffa5}*SharedItemsImports = 4
+		ResolutionBuddy.SharedProject\ResolutionBuddy.SharedProject.projitems*{d899c887-be45-4b96-9a26-3ec975301fd5}*SharedItemsImports = 4
 	EndGlobalSection
 EndGlobal

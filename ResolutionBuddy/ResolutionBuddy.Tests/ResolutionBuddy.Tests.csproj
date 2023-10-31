@@ -10,7 +10,7 @@
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>ResolutionBuddy.Tests</RootNamespace>
     <AssemblyName>ResolutionBuddy.Tests</AssemblyName>
-    <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
+    <TargetFrameworkVersion>v4.8</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <SolutionDir Condition="$(SolutionDir) == '' Or $(SolutionDir) == '*Undefined*'">..\..\..\..\Windows\</SolutionDir>
     <RestorePackages>true</RestorePackages>
@@ -52,7 +52,7 @@
   </ItemGroup>
   <ItemGroup>
     <Reference Include="MatrixExtensions.WindowsDX, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\MatrixExtensions.2.0.0\lib\net451\MatrixExtensions.WindowsDX.dll</HintPath>
+      <HintPath>..\packages\MatrixExtensions.4.0.0\lib\net451\MatrixExtensions.WindowsDX.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="MonoGame.Framework, Version=3.7.1.189, Culture=neutral, processorArchitecture=MSIL">
@@ -62,7 +62,7 @@
       <HintPath>..\packages\NUnit.3.12.0\lib\net45\nunit.framework.dll</HintPath>
     </Reference>
     <Reference Include="RandomExtensions.WindowsDX, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\RandomExtensions.dmanning23.2.0.1\lib\net452\RandomExtensions.WindowsDX.dll</HintPath>
+      <HintPath>..\packages\RandomExtensions.dmanning23.4.0.0\lib\net452\RandomExtensions.WindowsDX.dll</HintPath>
     </Reference>
     <Reference Include="SharpDX, Version=4.2.0.0, Culture=neutral, PublicKeyToken=b4dcf0f35e5521f1, processorArchitecture=MSIL">
       <HintPath>..\packages\SharpDX.4.2.0\lib\net45\SharpDX.dll</HintPath>
@@ -96,7 +96,7 @@
     </Reference>
     <Reference Include="System" />
     <Reference Include="Vector2Extensions.WindowsDX, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\Vector2Extensions.2.0.2\lib\net451\Vector2Extensions.WindowsDX.dll</HintPath>
+      <HintPath>..\packages\Vector2Extensions.4.0.0\lib\net451\Vector2Extensions.WindowsDX.dll</HintPath>
     </Reference>
   </ItemGroup>
   <Import Project="..\ResolutionBuddy.SharedProject\ResolutionBuddy.SharedProject.projitems" Label="Shared" />

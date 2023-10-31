@@ -2,40 +2,36 @@
 <package xmlns="http://schemas.microsoft.com/packaging/2011/08/nuspec.xsd">
 	<metadata>
 		<id>ResolutionBuddy</id>
-		<version>2.0.6</version>
+		<version>4.0.0</version>
 		<title>ResolutionBuddy</title>
 		<authors>dmanning23</authors>
-		<owners>dmanning23</owners>
 		<projectUrl>https://github.com/dmanning23/ResolutionBuddy</projectUrl>
 		<licenseUrl>https://github.com/dmanning23/ResolutionBuddy/blob/master/LICENSE.txt</licenseUrl>
-		<requireLicenseAcceptance>false</requireLicenseAcceptance>
 		<description>Easily manage the window resolution of an MonoGame project</description>
-		<releaseNotes />
-		<copyright>Copyright 2016</copyright>
 		<tags>android, ios, windows universal, monogame, xamarin</tags>
 		<dependencies>
 
 			<!--Xamarin.Android-->
 			<group targetFramework="MonoAndroid10">
 				<dependency id="MonoGame.Framework.Android" version="3.7"/>
-				<dependency id="RandomExtensions.dmanning23" version="2.0"/>
-				<dependency id="Vector2Extensions" version="2.0"/>
-				<dependency id="MatrixExtensions" version="2.0"/>
+				<dependency id="RandomExtensions.dmanning23" version="4.0"/>
+				<dependency id="Vector2Extensions" version="4.0"/>
+				<dependency id="MatrixExtensions" version="4.0"/>
 			</group>
 
 			<!--Xamarin.iOS Unified-->
 			<group targetFramework="Xamarin.iOS10">
 				<dependency id="MonoGame.Framework.iOS" version="3.7"/>
-				<dependency id="RandomExtensions.dmanning23" version="2.0"/>
-				<dependency id="Vector2Extensions" version="2.0"/>
-				<dependency id="MatrixExtensions" version="2.0"/>
+				<dependency id="RandomExtensions.dmanning23" version="4.0"/>
+				<dependency id="Vector2Extensions" version="4.0"/>
+				<dependency id="MatrixExtensions" version="4.0"/>
 			</group>
 
-			<group targetFramework="net451">
+			<group targetFramework="net452">
 				<dependency id="MonoGame.Framework.WindowsDX" version="3.7"/>
-				<dependency id="RandomExtensions.dmanning23" version="2.0"/>
-				<dependency id="Vector2Extensions" version="2.0"/>
-				<dependency id="MatrixExtensions" version="2.0"/>
+				<dependency id="RandomExtensions.dmanning23" version="4.0"/>
+				<dependency id="Vector2Extensions" version="4.0"/>
+				<dependency id="MatrixExtensions" version="4.0"/>
 			</group>
 
 		</dependencies>
@@ -51,8 +47,8 @@
 		<file src="ResolutionBuddy.iOS\bin\Release\ResolutionBuddy.iOS.dll" target="lib\Xamarin.iOS10\ResolutionBuddy.iOS.dll" />
 
 		<!--WindowsDX-->
-		<file src="ResolutionBuddy.WindowsDX\bin\Release\ResolutionBuddy.WindowsDX.pdb" target="lib\net451\ResolutionBuddy.WindowsDX.pdb" />
-		<file src="ResolutionBuddy.WindowsDX\bin\Release\ResolutionBuddy.WindowsDX.dll" target="lib\net451\ResolutionBuddy.WindowsDX.dll" />
+		<file src="ResolutionBuddy.WindowsDX\bin\Release\ResolutionBuddy.WindowsDX.pdb" target="lib\net452\ResolutionBuddy.WindowsDX.pdb" />
+		<file src="ResolutionBuddy.WindowsDX\bin\Release\ResolutionBuddy.WindowsDX.dll" target="lib\net452\ResolutionBuddy.WindowsDX.dll" />
 
 	</files>
 </package>
