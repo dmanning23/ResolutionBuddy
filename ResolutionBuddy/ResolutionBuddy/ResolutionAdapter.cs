@@ -5,6 +5,11 @@ using Microsoft.Xna.Framework.Graphics;
 
 namespace ResolutionBuddy
 {
+	/// <summary>
+	/// Internal implementation of <see cref="IResolution"/> that handles the actual scaling
+	/// math, viewport management, and aspect-ratio correction. Consumed by
+	/// <see cref="ResolutionComponent"/> and exposed through the <see cref="Resolution"/> singleton.
+	/// </summary>
 	internal class ResolutionAdapter : IResolution
 	{
 		#region Fields
@@ -45,15 +50,25 @@ namespace ResolutionBuddy
 		/// </summary>
 		private bool _fullScreen;
 
+		/// <summary>
+		/// When true, uses the device's native resolution instead of <see cref="_screenResolution"/>.
+		/// </summary>
 		private bool _useDeviceResolution;
 
 		/// <summary>
-		/// whether or not the matrix needs to be recreated
+		/// Whether the scale matrix needs to be recalculated before the next draw.
 		/// </summary>
 		private bool _dirtyMatrix = true;
 
+		/// <summary>
+		/// When true, black bars are added to preserve the virtual aspect ratio.
+		/// When false, the virtual resolution is adjusted to match the screen aspect ratio.
+		/// </summary>
 		private bool _letterBox;
 
+		/// <summary>
+		/// Offset applied to the screen matrix to account for letterbox/pillarbox bars.
+		/// </summary>
 		private Vector2 _pillarBox;
 
 		/// <summary>
@@ -66,16 +81,25 @@ namespace ResolutionBuddy
 
 		#region Properties
 
+		/// <summary>
+		/// The title-safe rectangle in virtual (game) coordinates. Inset by 5% on each side.
+		/// </summary>
 		public Rectangle TitleSafeArea
 		{
 			get { return _titleSafeArea; }
 		}
 
+		/// <summary>
+		/// The full-screen rectangle in virtual (game) coordinates.
+		/// </summary>
 		public Rectangle ScreenArea
 		{
 			get { return _screenArea; }
 		}
 
+		/// <summary>
+		/// Matrix to convert screen coordinates to game coordinates. Use for mapping mouse clicks and touch events.
+		/// </summary>
 		public Matrix ScreenMatrix
 		{
 			get
@@ -85,9 +109,8 @@ namespace ResolutionBuddy
 		}
 
 		/// <summary>
-		/// Get virtual Mode Aspect Ratio
+		/// The aspect ratio of the virtual (game) resolution (width / height).
 		/// </summary>
-		/// <returns>aspect ratio</returns>
 		private float VirtualAspectRatio
 		{
 			get
@@ -97,9 +120,8 @@ namespace ResolutionBuddy
 		}
 
 		/// <summary>
-		/// Get virtual Mode Aspect Ratio
+		/// The aspect ratio of the physical screen resolution (width / height).
 		/// </summary>
-		/// <returns>aspect ratio</returns>
 		private float ScreenAspectRatio
 		{
 			get
@@ -108,6 +130,10 @@ namespace ResolutionBuddy
 			}
 		}
 
+		/// <summary>
+		/// The virtual resolution that defines the game's coordinate space.
+		/// Setting this recalculates the title-safe area and marks the scale matrix dirty.
+		/// </summary>
 		public Point VirtualResolution
 		{
 			get
@@ -120,6 +146,10 @@ namespace ResolutionBuddy
 			}
 		}
 
+		/// <summary>
+		/// The desired physical screen or window resolution.
+		/// Setting this re-applies all resolution settings via <see cref="SetScreenResolution"/>.
+		/// </summary>
 		public Point ScreenResolution
 		{
 			get
@@ -177,11 +207,19 @@ namespace ResolutionBuddy
 		}
 
 		/// <summary>
-		/// Sets the screen we are going to use for the screen
+		/// Applies the screen resolution settings and configures the graphics device.
 		/// </summary>
-		/// <param name="width">Width.</param>
-		/// <param name="height">Height.</param>
-		/// <param name="fullScreen">If set to <c>true</c> full screen.</param>
+		/// <param name="width">The desired back buffer width in pixels.</param>
+		/// <param name="height">The desired back buffer height in pixels.</param>
+		/// <param name="fullScreen">Whether to run in fullscreen mode.</param>
+		/// <param name="letterbox">
+		/// <c>true</c> to preserve the virtual aspect ratio with black bars;
+		/// <c>false</c> to adjust the virtual resolution to match the screen aspect ratio.
+		/// </param>
+		/// <param name="useDeviceResolution">
+		/// <c>true</c> to use the device's native resolution, ignoring <paramref name="width"/> and <paramref name="height"/>;
+		/// <c>null</c> to fall back to the value of <paramref name="fullScreen"/>.
+		/// </param>
 		public void SetScreenResolution(int width, int height, bool fullScreen, bool letterbox, bool? useDeviceResolution)
 		{
 			_screenResolution.X = width;
@@ -194,6 +232,12 @@ namespace ResolutionBuddy
 			ApplyResolutionSettings();
 		}
 
+		/// <summary>
+		/// Validates the screen resolution against available display modes, clamps it to the
+		/// display bounds if needed, then applies the settings to the graphics device.
+		/// If <see cref="_letterBox"/> is false, also adjusts the virtual resolution to match
+		/// the screen aspect ratio.
+		/// </summary>
 		protected virtual void ApplyResolutionSettings()
 		{
 			// If we aren't using a full screen mode, the height and width of the window can
@@ -253,6 +297,11 @@ namespace ResolutionBuddy
 			_dirtyMatrix = true;
 		}
 
+		/// <summary>
+		/// Adjusts the virtual resolution so its aspect ratio matches the current screen aspect ratio,
+		/// keeping whichever axis fits and pulling in the other to match.
+		/// Called when <see cref="_letterBox"/> is false.
+		/// </summary>
 		protected void UpdateVirtualResolution()
 		{
 			if (ScreenAspectRatio < VirtualAspectRatio)
@@ -298,6 +347,10 @@ namespace ResolutionBuddy
 			return MatrixExt.Multiply(_screenMatrix, screenCoord);
 		}
 
+		/// <summary>
+		/// Rebuilds the scale and screen matrices based on the current viewport dimensions.
+		/// </summary>
+		/// <param name="vp">The current viewport width and height in pixels.</param>
 		protected virtual void RecreateScaleMatrix(Point vp)
 		{
 			_dirtyMatrix = false;
@@ -315,6 +368,11 @@ namespace ResolutionBuddy
 				1.0f));
 		}
 
+		/// <summary>
+		/// Recalculates and applies the viewport to maintain the virtual aspect ratio,
+		/// centering it within the back buffer and adding letterbox or pillarbox bars as needed.
+		/// Marks the scale matrix dirty when the viewport dimensions change.
+		/// </summary>
 		public void ResetViewport()
 		{
 			// figure out the largest area that fits in this resolution at the desired aspect ratio

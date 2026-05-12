@@ -2,7 +2,7 @@
   <PropertyGroup>
     <TargetFramework>net8.0</TargetFramework>
     <PackageId>ResolutionBuddy</PackageId>
-    <Version>5.0.0</Version>
+    <Version>5.0.1</Version>
     <Title>ResolutionBuddy</Title>
     <Authors>dmanning23</Authors>
     <description>Easily manage the window resolution of an MonoGame project</description>
